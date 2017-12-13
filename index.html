@@ -227,7 +227,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             let li = document.createElement('li');
 
             let nval = natVal(num / el[0]);
-            li.innerHTML = `<strong>${nval}</strong> <span title='${gr}: ${el[0]} ${units[gr]}'>${el[1]}</span>`;
+            li.innerHTML = `<strong>${nval}</strong> <span title='${gr}: ${natVal(el[0])} ${units[gr]}'>${el[1]}</span>`;
             ul.appendChild(li);
         }
         tg.appendChild(ul);
