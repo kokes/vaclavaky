@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+        <title>Václaváky</title>
+
+    <style type='text/css'>
+        body {
+            font: .8em Arial, sans-serif;
+            background-color: #eee;
+        }
+        div#doc {
+            max-width: 960px;
+            padding-top: 10%;
+            margin: 1em auto;
+
+            border: 1px solid #ccc;
+            padding: 1.5em;
+            background-color: white;
+            /*border-radius: 10px;*/
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        div#inputs input#num {
+            font-size: 1.5em;
+            /*display: block;*/
+            /*margin: 0 auto;*/
+            width: 60%;
+            background: white;
+            border: 1px solid black;
+        }
+        input.invalid { background-color: #D46A6A !important; }
+        input.valid { background-color: #9ED78F !important; }
+        div#inputs select {
+            font-size: 1.5em;
+        }
+        div#outputs ul {
+            font-size: 1.5em;
+        }
+        div#footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id='doc'>
+    <div id='inputs'>
+        <input type='text' id='num' placeholder='kolik to měří/váží/stojí?' />
+        <select id='mul'>
+            <option value='0'>jednotek</option>
+            <option value='3'>tisíc</option>
+            <option value='6'>milionů</option>
+            <option value='9'>miliard</option>
+            <option value='12'>bilionů</option>
+        </select>
+        <select id='unit'>
+            <optgroup label='Rozloha'>
+                <option value='m2'>m&sup2;</option>
+                <option value='km2'>km&sup2;</option>
+                <option value='ha'>hektarů</option>
+                <option value='msq'>čtverečných mil</option>
+            </optgroup>
+
+            <optgroup label='Cena'>
+                <option value='kc'>Kč</option>
+                <option value='usd'>dolarů</option>
+                <option value='eur'>eur</option>
+                <option value='gbp'>liber</option>
+            </optgroup>
+
+            <optgroup label='Váha'>
+                <option value='kg'>kg</option>
+                <option value='tn'>tun</option>
+                <option value='lb'>liber</option>
+            </optgroup>
+
+            <optgroup label='Osob'>
+                <option value='1'>lidí</option>
+                <option value='2'>párů</option>
+                <option value='4'>rodin</option>                
+            </optgroup>
+
+        </select>
+    </div>
+
+    <div id='outputs'></div>
+
+</div>
+
+<div id='footer'>
+S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@kondrej</a>
+</div>
+
+
+<script type='text/javascript'>
+    function wipeElement(el) {
+        while (el.firstChild) {
+            el.removeChild(el.firstChild);
+        }
+    }
+
+    let unitConv = {
+        // normalize: m2
+        'm2': 1,
+        'km2': 1000 * 1000,
+        'ha': 100 * 100,
+        'msq': 1609.344 * 1609.344,
+
+        // normalize: kc
+        'kc': 1,
+        'usd': 21.475, // 1/12/2017
+        'eur': 25.525,
+        'gbp': 28.967,
+
+        // normalize: kg
+        'kg': 1,
+        'tn': 1000,
+        'lb': 0.453592,
+
+        // normalize: people
+        '1': 1,
+        '2': 2,
+        '4': 4
+    };
+
+    let convTg = {
+        // kg
+        'Váha': [
+            [ 1150, 'vozů Škoda Fabia'],
+            [ 439985, 'Boeingů 747-8'],
+            [ 1/6, 'Kč ve víčkách']
+        ],
+        // m^2
+        'Rozloha': [
+            [ 42255, 'Václaváků'], // wiki říká 682 * 60, ale Cíba kouká do katastru
+            // Karlák?
+            [ 11.626 * 1000 * 1000, 'nádrží Slapy'],
+            [ 105 * 68, 'fotbalových hřišť v Edenu'],
+            [ 310.5 * 202.5, 'Strahovských stadionů'],
+            [ 496 * 1000 * 1000, 'rozloh Prahy']
+            // rozloh ceska
+        ],
+        // kč
+        'Cena': [
+            [ 29, 'cheeseburgerů'],
+            [ 100, 'fidget spinnerů'],
+            [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
+            [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
+            // tuzemaku, vicek, platu poslance, iphonu, prumernych mezd, casopisu vlasta
+            [ 150, 'lahví tuzemáku'],
+            [ 6, 'kilogramů víček'] // víčka - 6 Kč/kg
+        ],
+        'Osob': [
+            [ 11, 'Klapzubových jedenáctek'],
+            [ 90000, 'naplněných Wembley'],
+            [ 250000, 'naplněných Strahovských stadionů'],
+            [ 868, 'plných Airbusů A380-800'],
+        ]
+    };
+
+    let units = {
+        'Váha': 'kg',
+        'Rozloha': 'm2',
+        'Cena': 'Kč',
+        'Osob': 'lidí',
+    }
+
+
+    document.getElementById('num').addEventListener('change', renderCalcs);
+    document.getElementById('num').addEventListener('keyup', renderCalcs);
+    document.getElementById('mul').addEventListener('change', renderCalcs);
+    document.getElementById('unit').addEventListener('change', renderCalcs);
+
+    // init
+    let hs = window.location.hash;
+    if (hs.length > 0) {
+        let allowed = ['num', 'mul', 'unit'];
+        for (let el of hs.slice(1).split('&')) {
+            let kv = el.split('=')
+            if (!allowed.includes(kv[0])) {
+                continue;
+            }
+
+            document.getElementById(kv[0]).value = kv[1];
+        }
+        renderCalcs();
+    }
+
+    function parseInput(inp) {
+        let ret = inp.trim().replace(/\s+/g, '');
+        ret = ret.replace(',', '.');
+        console.log(ret)
+
+        return parseFloat(ret);
+    }
+
+    function renderCalcs() {
+        let tg = document.getElementById('outputs');
+        wipeElement(tg);
+        let inputs = {
+            num: document.getElementById('num').value,
+            mul: document.getElementById('mul').value,
+            unit: document.getElementById('unit').value
+        }
+        window.location.hash = Object.keys(inputs).map(k => k + '=' + encodeURIComponent(inputs[k])).join('&');
+
+        let num = parseInput(inputs.num);
+        
+        if (isNaN(num)) {
+            document.getElementById('num').className = 'invalid';
+            return;
+        } else {
+            document.getElementById('num').className = 'valid';
+        }
+
+        num *= Math.pow(10, parseInt(inputs.mul));
+
+        num *= unitConv[inputs.unit];
+
+        // get optgroup
+        let op = document.getElementById('unit');
+        let gr = op.options[op.selectedIndex].parentNode.label;
+
+        let ul = document.createElement('ul');
+        for (let el of convTg[gr]) {
+            let li = document.createElement('li');
+
+            let nval = natVal(num / el[0]);
+            li.innerHTML = `<strong>${nval}</strong> <span title='${gr}: ${el[0]} ${units[gr]}'>${el[1]}</span>`;
+            ul.appendChild(li);
+        }
+        tg.appendChild(ul);
+    }
+
+    function numFormat(val) {
+        let ret = val.toFixed(2).replace('.', ',');
+        ret = ret.replace(/,0+$/, '');
+        if (ret === '0') {
+            return '< 0,01';
+        }
+        return ret;
+    }
+
+    function natVal(val) {
+        let nat = [
+            [12, 'bilionů'],
+            [9, 'miliard'],
+            [6, 'milionů'],
+            [3, 'tisíc']
+        ]
+        for (let el of nat) {
+            if (val >= Math.pow(10, el[0])) {
+                let nval = val / Math.pow(10, el[0]);
+                return `${numFormat(nval)} ${el[1]}`;
+            }
+        }
+        return numFormat(val);
+    }
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98368126-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-98368126-2');
+</script>
+
+
+</body>
+</html>
