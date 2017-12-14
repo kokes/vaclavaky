@@ -81,6 +81,11 @@
                 <option value='4'>rodin</option>                
             </optgroup>
 
+            <optgroup label='Vzdálenost'>
+                <option value='m'>m</option>
+                <option value='km'>km</option>
+            </optgroup>
+
         </select>
     </div>
 
@@ -121,7 +126,11 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         // normalize: people
         '1': 1,
         '2': 2,
-        '4': 4
+        '4': 4,
+
+        //normalize: m
+        'm': 1,
+        'km': 1000
     };
 
     let convTg = {
@@ -156,6 +165,12 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             [ 90000, 'naplněných Wembley'],
             [ 250000, 'naplněných Strahovských stadionů'],
             [ 868, 'plných Airbusů A380-800'],
+        ],
+        // m
+        'Vzdálenost': [
+            [ 384400 * 1000, 'krát ze Země na Měsíc'],
+            [ 205 * 1000, 'krát z Prahy do Brna'],
+            [ 24.5, 'vagónů dlouhý vlak']
         ]
     };
 
@@ -164,6 +179,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         'Rozloha': 'm2',
         'Cena': 'Kč',
         'Osob': 'lidí',
+        'Vzdálenost': 'm',
     }
 
 
