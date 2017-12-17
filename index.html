@@ -288,11 +288,13 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98368126-2"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+if (!window.location.href.startsWith('file:/')) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-98368126-2');
+    gtag('config', 'UA-98368126-2');
+}
 </script>
 
 
