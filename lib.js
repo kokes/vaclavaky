@@ -55,6 +55,9 @@ let convTg = {
         [ 37046, 'průměrných mezd v Praze'],
         [ 243900, 'vozů Škoda Fabia'], // http://www.skoda-auto.cz/modely/fabia/fabia
         [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
+        // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
+        // https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/
+        [ 245619500000, 'let elektřiny pro ČR'], // 245 mld 619 mil 500 tis;
         [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
     ],
     'Osob': [
