@@ -30,51 +30,53 @@ let unitConv = {
 let convTg = {
     // kg
     'Váha': [
+        [ 1/6, 'Kč ve víčkách'],
         [ 1150, 'vozů Škoda Fabia'],
         [ 439985, 'Boeingů 747-8'],
-        [ 1/6, 'Kč ve víčkách'],
     ],
     // m^2
     'Rozloha': [
         [ 42255, 'Václaváků'], // wiki říká 682 * 60, ale Cíba kouká do katastru
         // Karlák?
-        [ 11.626 * 1000 * 1000, 'nádrží Slapy'],
         [ 105 * 68, 'fotbalových hřišť v Edenu'],
         [ 310.5 * 202.5, 'Strahovských stadionů'],
+        [ 11.626 * 1000 * 1000, 'nádrží Slapy'],
         [ 496 * 1000 * 1000, 'rozloh Prahy'],
-        [ 696241 * 1000 * 1000, 'rozloh Texasu'],
         [ 78866 * 1000 * 1000, 'rozloh ČR'],
+        [ 696241 * 1000 * 1000, 'rozloh Texasu'],
     ],
     // kč
     'Cena': [
+        [ 6, 'kilogramů víček'], // víčka - 6 Kč/kg
         [ 29, 'cheeseburgerů'],
-        [ 100, 'fidget spinnerů'],
-        [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
-        [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
+        [ 150, 'obědů'],
         // tuzemaku, vicek, platu poslance, iphonu, casopisu vlasta
         [ 29346, 'průměrných mezd'],
         [ 37046, 'průměrných mezd v Praze'],
-        [ 150, 'lahví tuzemáku'],
-        [ 6, 'kilogramů víček'], // víčka - 6 Kč/kg
         [ 243900, 'vozů Škoda Fabia'], // http://www.skoda-auto.cz/modely/fabia/fabia
+        [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
+        // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
+        // https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/
+        [ 245619500000, 'let elektřiny pro ČR'], // 245 mld 619 mil 500 tis;
+        [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
     ],
     'Osob': [
         [ 11, 'Klapzubových jedenáctek'],
+        [ 868, 'plných Airbusů A380-800'],
+        [ 17360, 'naplněných pražských O2 aren'],
         [ 90000, 'naplněných Wembley'],
         [ 250000, 'naplněných Strahovských stadionů'],
-        [ 17360, 'naplněných pražských O2 aren'],
         [ 10578820, 'Českých republik'],
-        [ 868, 'plných Airbusů A380-800'],
     ],
     // m
     'Vzdálenost': [
+        [ 3.992, 'vozů Škoda Fabia za sebou'],
+        [ 24.5, 'vagónů dlouhý vlak'],
+        [ 205 * 1000, 'krát z Prahy do Brna'],
+        [ 6371 * 1000, 'poloměrů Země'],
+        [ 40075 * 1000, 'krát okolo Země (na rovníku)'],
         [ 384400 * 1000, 'krát ze Země na Měsíc'],
         [ 149597870700, 'krát ze Země na Slunce (AU)'],
-        [ 205 * 1000, 'krát z Prahy do Brna'],
-        [ 24.5, 'vagónů dlouhý vlak'],
-        [ 3.992, 'vozů Škoda Fabia za sebou'],
-        [ 40075 * 1000, 'krát okolo Země (na rovníku)'],
-        [ 6371 * 1000, 'poloměrů Země'],
     ]
 };
 

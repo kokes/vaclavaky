@@ -3,50 +3,80 @@
 <head>
     <meta charset='utf-8' />
         <title>Václaváky</title>
+        <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='manifest' href='manifest.json'>
+        <meta name="theme-color" content="#EEEEEE" />
 
     <style type='text/css'>
         body {
-            font: 1.1em Arial, sans-serif;
             background-color: #eee;
+            margin: 0;
         }
-        div#doc {
+        header {
+            padding: 1em;
+            background-color: #8bc34a;
+            box-shadow: 1px 2px 17px 0px #9e9d9d;
+        }
+        main {
             max-width: 960px;
             padding-top: 10%;
             margin: 1em auto;
-
-            border: 1px solid #ccc;
             padding: 1.5em;
-            background-color: white;
-            /*border-radius: 10px;*/
-            box-shadow: 0 0 10px #ccc;
+        }
+        div#inputs {
+            display: grid;
+            grid-template-columns: minmax(50%, 70%) minmax(100px, 200px) minmax(100px, 200px);
+            grid-gap: 10px;
+        }
+        @media (max-width: 500px) {
+            div#inputs {
+                grid-template-columns: auto;
+                grid-gap: 20px;
+            }
         }
 
         div#inputs input#num {
-            font-size: 1.5em;
-            /*display: block;*/
-            /*margin: 0 auto;*/
-            width: 60%;
-            background: white;
-            border: 1px solid black;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            font-size: 1.3em;
+            /*background: white;*/
+            line-height: 40px;
+            outline: none;
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid #DDDDDD;
         }
-        input.invalid { background-color: #D46A6A !important; }
-        input.valid { background-color: #9ED78F !important; }
+        input.invalid {
+          box-shadow: 0 0 17px #d83b3b;
+          padding: 3px 0px 3px 3px;
+          margin: 5px 1px 3px 0px;
+          border: 1px solid #d83b3b;
+        }
+        /*input.valid { background-color: #9ED78F !important; }*/
         div#inputs select {
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
         div#outputs ul {
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
-        div#footer {
+        ul li {
+            /*list-style: none;*/
+        }
+        footer {
             text-align: center;
+            color: rgb(166, 166, 166);
         }
     </style>
 </head>
 <body>
 
-<div id='doc'>
+<header>
     <div id='inputs'>
-        <input type='text' id='num' placeholder='kolik to měří/váží/stojí?' />
+        <input type='number' id='num' placeholder='kolik to měří/váží/stojí?' />
+
         <select id='mul'>
             <option value='0'>jednotek</option>
             <option value='3'>tisíc</option>
@@ -56,6 +86,12 @@
         </select>
 
         <select id='unit'>
+            <optgroup label='Cena'>
+                <option value='kc'>Kč</option>
+                <option value='usd'>dolarů</option>
+                <option value='eur'>eur</option>
+                <option value='gbp'>liber</option>
+            </optgroup>
             <optgroup label='Rozloha'>
                 <option value='m2'>m&sup2;</option>
                 <option value='km2'>km&sup2;</option>
@@ -66,38 +102,35 @@
                 <option value='m'>m</option>
                 <option value='km'>km</option>
             </optgroup>
-            <optgroup label='Cena'>
-                <option value='kc'>Kč</option>
-                <option value='usd'>dolarů</option>
-                <option value='eur'>eur</option>
-                <option value='gbp'>liber</option>
-            </optgroup>
-
             <optgroup label='Váha'>
                 <option value='kg'>kg</option>
                 <option value='tn'>tun</option>
                 <option value='lb'>liber</option>
             </optgroup>
-
             <optgroup label='Osob'>
                 <option value='1'>lidí</option>
                 <option value='2'>párů</option>
-                <option value='4'>rodin</option>                
+                <option value='4'>rodin</option>
             </optgroup>
         </select>
     </div>
+</header>
 
+<main>
     <div id='outputs'></div>
+</main>
 
-</div>
 
-<div id='footer'>
+<footer>
 S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@kondrej</a>
-</div>
+</footer>
 
 
 <script type='text/javascript' src='lib.js'></script>
 <script type='text/javascript'>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
     function wipeElement(el) {
         while (el.firstChild) {
             el.removeChild(el.firstChild);
@@ -133,13 +166,13 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             unit: document.getElementById('unit').value
         }
         window.location.hash = Object.keys(inputs).map(k => k + '=' + encodeURIComponent(inputs[k])).join('&');
-        
+
         // get optgroup
         let op = document.getElementById('unit');
         let gr = op.options[op.selectedIndex].parentNode.label;
 
         let result = numToText(inputs.num, inputs.mul, inputs.unit, gr);
-        
+
         if (result === null) {
             document.getElementById('num').className = 'invalid';
             return;
