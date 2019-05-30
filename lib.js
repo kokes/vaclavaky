@@ -28,6 +28,7 @@ let unitConv = {
 
     // normalize m^3
     'm3': 1,
+    'hl': 0.1,
     'ft3': 1/35,
 };
 
@@ -89,7 +90,8 @@ let convTg = {
     'Objem': [
         [ 1/2000, 'půllitrů piva'],
         [ 2500, 'olympijských bazénů'],
-        [ 315 / 1000, 'plných kufrů Škody Fabia']
+        [ 315 / 1000, 'plných kufrů Škody Fabia'],
+        [ 16.5*1000*1000*100 / 1000, 'ročních spotřeb piva v ČR'], // https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj
     ],
 };
 
