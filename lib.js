@@ -24,7 +24,11 @@ let unitConv = {
 
     //normalize: m
     'm': 1,
-    'km': 1000
+    'km': 1000,
+
+    // normalize m^3
+    'm3': 1,
+    'ft3': 1/35,
 };
 
 let convTg = {
@@ -80,7 +84,13 @@ let convTg = {
         [ 40075 * 1000, 'krát okolo Země (na rovníku)'],
         [ 384400 * 1000, 'krát ze Země na Měsíc'],
         [ 149597870700, 'krát ze Země na Slunce (AU)'],
-    ]
+    ],
+    // m^3
+    'Objem': [
+        [ 1/2000, 'půllitrů piva'],
+        [ 2500, 'olympijských bazénů'],
+        [ 315 / 1000, 'plných kufrů Škody Fabia']
+    ],
 };
 
 let units = {
