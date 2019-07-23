@@ -68,6 +68,9 @@ let convTg = {
         // https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/
         [ 245619500000, 'let elektřiny pro ČR'], // 245 mld 619 mil 500 tis;
         [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
+        [ 5, 'dětských plínek'],
+        [ 11.34, 'lahvových piv'], // https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779
+        [ 100, 'krabiček cigaret'],
     ],
     'Osob': [
         [ 11, 'Klapzubových jedenáctek'],
