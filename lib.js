@@ -152,6 +152,7 @@ function numToText(number, mul, unit, gr) {
     num *= unitConv[unit];
 
     let res = [];
+    convTg[gr].sort((a, b) => a[0] - b[0]);
     for (let el of convTg[gr]) {
         let nval = natVal(num / el[0]);
         res.push({
