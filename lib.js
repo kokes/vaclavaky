@@ -96,6 +96,7 @@ let convTg = {
         [ 2500, 'olympijských bazénů'],
         [ 315 / 1000, 'plných kufrů Škody Fabia'],
         [ 16.5*1000*1000*100 / 1000, 'ročních spotřeb piva v ČR'], // https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj
+        [ 85*60*60 / (100*100*100), 'praček'], // https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/, re: https://twitter.com/41actionnews/status/1158871610876682240
     ],
 };
 
