@@ -59,17 +59,14 @@ let convTg = {
         // tuzemaku, vicek, platu poslance, iphonu, casopisu vlasta
         [ 29346, 'průměrných mezd'],
         [ 37046, 'průměrných mezd v Praze'],
-        // http://www.skoda-auto.cz/modely/fabia/fabia
-        [ 243900, 'vozů Škoda Fabia'],
-        // https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/
-        [ 152 * 1000 * 1000, 'kilometrů dálnic'],
+        [ 243900, 'vozů Škoda Fabia', ['http://www.skoda-auto.cz/modely/fabia/fabia']],
+        [ 152 * 1000 * 1000, 'kilometrů dálnic', ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/']],
         [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
         // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
-        // https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/
-        [ 245619500000, 'let elektřiny pro ČR'], // 245 mld 619 mil 500 tis;
+        [ 245619500000, 'let elektřiny pro ČR', ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/']], // 245 mld 619 mil 500 tis;
         [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
         [ 5, 'dětských plínek'],
-        [ 11.34, 'lahvových piv'], // https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779
+        [ 11.34, 'lahvových piv', ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779']],
         [ 100, 'krabiček cigaret'],
     ],
     'Osob': [
@@ -95,8 +92,8 @@ let convTg = {
         [ 1/2000, 'půllitrů piva'],
         [ 2500, 'olympijských bazénů'],
         [ 315 / 1000, 'plných kufrů Škody Fabia'],
-        [ 16.5*1000*1000*100 / 1000, 'ročních spotřeb piva v ČR'], // https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj
-        [ 85*60*60 / (100*100*100), 'praček'], // https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/, re: https://twitter.com/41actionnews/status/1158871610876682240
+        [ 16.5*1000*1000*100 / 1000, 'ročních spotřeb piva v ČR', ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj']],
+        [ 85*60*60 / (100*100*100), 'praček', ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
     ],
 };
 
@@ -159,6 +156,7 @@ function numToText(number, mul, unit, gr) {
         res.push({
             value: nval,
             unit: el[1],
+            sources: el[2],
         });
     }
 

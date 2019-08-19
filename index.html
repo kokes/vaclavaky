@@ -185,8 +185,14 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         for (let el of result) {
             let li = document.createElement('li');
 
-            // li.innerHTML = `<strong>${nval}</strong> <span title='${gr}: ${natVal(el[0])} ${units[gr]}'>${el[1]}</span>`;
             li.innerHTML = `<strong>${el.value}</strong> <span>${el.unit}</span>`;
+            for (let hyperlink of (el.sources || [])) {
+                let link = document.createElement('a');
+                link.textContent = '↩';
+                link.setAttribute('style', 'padding: 0 .25em; font-size: .7em');
+                link.setAttribute('href', hyperlink);
+                li.appendChild(link);
+            }
             ul.appendChild(li);
         }
         tg.appendChild(ul);
