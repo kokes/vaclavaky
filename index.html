@@ -92,8 +92,8 @@
                 <option value='gbp'>liber</option>
             </optgroup>
             <optgroup label='Rozloha'>
-                <option value='m2'>m&sup2;</option>
-                <option value='km2'>km&sup2;</option>
+                <option value='m²'>m&sup2;</option>
+                <option value='km²'>km&sup2;</option>
                 <option value='ha'>hektarů</option>
                 <option value='msq'>čtverečných mil</option>
             </optgroup>
@@ -184,8 +184,23 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         let ul = document.createElement('ul');
         for (let el of result) {
             let li = document.createElement('li');
+            let title = el.normalisation + ' za jednotku';
 
-            li.innerHTML = `<strong>${el.value}</strong> <span>${el.unit}</span>`;
+            li.appendChild((() => {
+                let node = document.createElement('strong');
+                node.textContent = el.value + ' ';
+                node.setAttribute('title', title);
+                return node;
+            })());
+
+            li.appendChild((() => {
+                let node = document.createElement('span');
+                node.setAttribute('title', title);
+                node.textContent = el.unit;
+                return node;
+            })());
+
+            // li.innerHTML = `<strong>${el.value}</strong> <span>${el.unit}</span>`;
             for (let hyperlink of (el.sources || [])) {
                 let link = document.createElement('a');
                 link.textContent = '↩';

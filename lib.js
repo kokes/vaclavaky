@@ -1,8 +1,8 @@
 
 let unitConv = {
     // normalize: m2
-    'm2': 1,
-    'km2': 1000 * 1000,
+    'm²': 1,
+    'km²': 1000 * 1000,
     'ha': 100 * 100,
     'msq': 1609.344 * 1609.344,
 
@@ -99,7 +99,7 @@ let convTg = {
 
 let units = {
     'Váha': 'kg',
-    'Rozloha': 'm2',
+    'Rozloha': 'm²',
     'Cena': 'Kč',
     'Osob': 'lidí',
     'Vzdálenost': 'm',
@@ -157,6 +157,7 @@ function numToText(number, mul, unit, gr) {
             value: nval,
             unit: el[1],
             sources: el[2],
+            normalisation: el[0] + ' ' + units[gr],
         });
     }
 
