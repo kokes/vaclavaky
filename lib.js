@@ -38,6 +38,7 @@ let convTg = {
         [ 1/6, 'Kč ve víčkách'],
         [ 1150, 'vozů Škoda Fabia'],
         [ 439985, 'Boeingů 747-8'],
+        [ 2.7 / 1000, 'koleček paprikáše'],
     ],
     // m^2
     'Rozloha': [
@@ -51,6 +52,7 @@ let convTg = {
         [ 696241 * 1000 * 1000, 'rozloh Texasu'],
         [ 4262 * 1732 / (1000 * 1000), 'slisovaných Fabií Combi'],
         [ 160 * 200 / (100 * 100), 'postelí (šířka 160 cm)'],
+        [ 5.5 * 5.5 / (100 * 100), 'koleček paprikáše'],
     ],
     // kč
     'Cena': [
@@ -69,6 +71,7 @@ let convTg = {
         [ 5, 'dětských plínek'],
         [ 11.34, 'lahvových piv', ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779']],
         [ 100, 'krabiček cigaret'],
+        [ 229, 'kilo paprikáše'],
     ],
     'Osob': [
         [ 11, 'Klapzubových jedenáctek'],
@@ -87,6 +90,7 @@ let convTg = {
         [ 40075 * 1000, 'krát okolo Země (na rovníku)'],
         [ 384400 * 1000, 'krát ze Země na Měsíc'],
         [ 149597870700, 'krát ze Země na Slunce (AU)'],
+        [ 0.2 / 100, 'koleček paprikáše'],
     ],
     // m^3
     'Objem': [
