@@ -49,7 +49,8 @@ let convTg = {
         [ 496 * 1000 * 1000, 'rozloh Prahy'],
         [ 78866 * 1000 * 1000, 'rozloh ČR'],
         [ 696241 * 1000 * 1000, 'rozloh Texasu'],
-        [ 4262 * 1732 / (1000 * 1000), 'slisovaných Fabií Combi']
+        [ 4262 * 1732 / (1000 * 1000), 'slisovaných Fabií Combi'],
+        [ 160 * 200 / (100 * 100), 'postelí (šířka 160 cm)'],
     ],
     // kč
     'Cena': [
