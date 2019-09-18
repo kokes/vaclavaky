@@ -39,6 +39,7 @@ let convTg = {
         [ 1150, 'vozů Škoda Fabia'],
         [ 439985, 'Boeingů 747-8'],
         [ 2.7 / 1000, 'koleček paprikáše'],
+        [ 240 / 1000, 'hamburgerů (Big Mac)', ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
     ],
     // m^2
     'Rozloha': [
