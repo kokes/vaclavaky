@@ -188,7 +188,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
 
             li.appendChild((() => {
                 let node = document.createElement('strong');
-                node.textContent = el.value + ' ';
+                node.innerHTML = el.value + ' ';
                 node.setAttribute('title', title);
                 return node;
             })());

@@ -124,7 +124,7 @@ function numFormat(val) {
     let ret = val.toFixed(2).replace('.', ',');
     ret = ret.replace(/,0+$/, '');
     if (ret === '0') {
-        return '< 0,01';
+        return `<sup>1</sup>&frasl;<sub>${Math.round(1/val)}</sub>`;
     }
     return ret;
 }
