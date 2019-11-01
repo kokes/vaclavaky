@@ -1,6 +1,7 @@
 
 let unitConv = {
     // normalize: m2
+    'ft2': 0.092903,
     'm2': 1,
     'km2': 1000 * 1000,
     'ha': 100 * 100,
