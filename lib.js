@@ -64,7 +64,8 @@ let convTg = {
         // tuzemaku, vicek, platu poslance, iphonu, casopisu vlasta
         [ 29346, 'průměrných mezd'],
         [ 37046, 'průměrných mezd v Praze'],
-        [ 243900, 'vozů Škoda Fabia', ['http://www.skoda-auto.cz/modely/fabia/fabia']],
+        [ 269900, 'vozů Škoda Fabia', ['http://www.skoda-auto.cz/modely/fabia/fabia']],
+        [ 1500000000, 'okresních nemocnic', ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717']],
         [ 152 * 1000 * 1000, 'kilometrů dálnic', ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/']],
         [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
         // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
