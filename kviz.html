@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+        <title>Václaváky - kvíz</title>
+        <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <meta name="theme-color" content="#EEEEEE" />
+
+    <style type='text/css'>
+        body {
+            background-color: #eee;
+            margin: 0;
+        }
+        main {
+            max-width: 960px;
+            padding-top: 10%;
+            margin: 1em auto;
+            padding: 1.5em;
+        }
+        footer {
+            text-align: center;
+            color: rgb(166, 166, 166);
+        }
+        div#question {
+            margin: 1em 0;
+            font-size: 2em;
+        }
+        div#question input#guess {
+            font-size: 1em;
+            width: 4em;
+        }
+        div#buttons {
+            margin: .5em auto;
+            width: 50%;
+        }
+        div#buttons button {
+            margin: 0 .3em;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div id='measures'>
+    </div>
+
+    <div id='question'>
+
+    </div>
+</main>
+
+
+<footer>
+S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@kondrej</a>
+</footer>
+
+
+<script type='text/javascript' src='lib.js'></script>
+<script type='text/javascript'>
+    function initMeasures() {
+        const md = document.getElementById('measures');
+        let j = 0
+        for (let measure of Object.keys(convTg)) {
+            const elId = `measure_${j}`;
+            const inp = document.createElement('input');
+            inp.setAttribute('type', 'checkbox');
+            inp.setAttribute('id', elId);
+            inp.setAttribute('checked', 'checked');
+            inp.setAttribute('disabled', 'disabled');
+
+            inp.addEventListener('change', () => {
+                // TODO
+            })
+
+            const label = document.createElement('label');
+            label.textContent = measure;
+            label.setAttribute('for', elId);
+
+            md.appendChild(inp);
+            md.appendChild(label);
+
+            j += 1;
+        }
+    }
+
+    function randomElement(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // warning: in place
+    function shuffleArray(arr) {
+        arr.sort(() => Math.random() - .5);
+    }
+
+    function renderQuestion() {
+        const qd = document.getElementById('question');
+        qd.innerHTML = '';
+
+        const measure = randomElement(Object.keys(convTg));
+
+        let targets = convTg[measure];
+        let qs = [];
+        shuffleArray(targets);
+        qs.push(targets.pop());
+        shuffleArray(targets);
+        qs.push(targets.pop());
+        qs.sort((a, b) => a[0] - b[0]); // chceme tu menší/lehčí/levnější věc jako první, ať ta otázka má smysl
+
+        qd.innerHTML = `${measure}: <input id='guess'></input> <em>${qs[0][1]}</em> se vejde do <em>${qs[1][1]}</em>`;
+
+        const answer = qs[1][0] / qs[0][0];
+        console.log(`Pro podvodníčky tu máme odpověď: ${answer}`);
+
+
+        const butts = document.createElement('div');
+        butts.setAttribute('id', 'buttons');
+        const val = document.createElement('button');
+        val.setAttribute('id', 'check');
+        val.textContent = 'Kontroluj';
+
+        const dunno = document.createElement('button');
+        dunno.textContent = 'Nevim, dál';
+        dunno.addEventListener('click', () => {
+            renderQuestion();
+        });
+
+        val.addEventListener('click', (e) => {
+            const guess = document.getElementById('guess').value;
+            // TODO: validace, že guess je číslo
+            const fguess = parseFloat(guess);
+            const err = Math.abs(fguess/answer - 1);
+
+            const evl = document.createElement('div');
+            evl.setAttribute('id', 'evaluation');
+
+            if (err === 0) {
+                evl.textContent = `Naprosto přesně!`;
+            } else if (err < .1) {
+                evl.textContent = `Těsně vedle! Správně to je ${answer.toFixed(2)}`;
+            } else {
+                evl.textContent = `Neni to tak, správně to je ${answer.toFixed(2)}`;
+            }
+            qd.appendChild(evl);
+
+            e.target.setAttribute('disabled', 'disabled');
+            dunno.textContent = 'Dál';
+        })
+
+        butts.appendChild(val);
+        butts.appendChild(dunno);
+        qd.appendChild(butts);
+    }
+
+
+    initMeasures();
+    renderQuestion();
+    document.getElementById('guess').focus();
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98368126-2"></script>
+<script>
+if (!window.location.href.startsWith('file:/')) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-98368126-2');
+}
+</script>
+
+
+</body>
+</html>
