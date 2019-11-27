@@ -100,7 +100,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
 
         const measure = randomElement(Object.keys(convTg));
 
-        let targets = convTg[measure];
+        let targets = JSON.parse(JSON.stringify(convTg[measure])); // nechcem mazat reálný data, musíme je duplikovat
         let qs = [];
         shuffleArray(targets);
         qs.push(targets.pop());
