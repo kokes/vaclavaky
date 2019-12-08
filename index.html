@@ -64,6 +64,9 @@
         ul li {
             /*list-style: none;*/
         }
+        ul li ul li {
+            font-size: .6em;
+        }
         footer {
             text-align: center;
             color: rgb(166, 166, 166);
@@ -153,19 +156,22 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
     document.getElementById('unit').addEventListener('change', renderCalcs);
 
     // init
-    let hs = window.location.hash;
-    if (hs.length > 0) {
-        let allowed = ['num', 'mul', 'unit'];
-        for (let el of hs.slice(1).split('&')) {
-            let kv = el.split('=')
-            if (!allowed.includes(kv[0])) {
-                continue;
-            }
+    function initFromHash() {
+        let hs = window.location.hash;
+        if (hs.length > 0) {
+            let allowed = ['num', 'mul', 'unit'];
+            for (let el of hs.slice(1).split('&')) {
+                let kv = el.split('=')
+                if (!allowed.includes(kv[0])) {
+                    continue;
+                }
 
-            document.getElementById(kv[0]).value = kv[1];
+                document.getElementById(kv[0]).value = kv[1];
+            }
+            renderCalcs();
         }
-        renderCalcs();
     }
+    initFromHash();
 
     function renderCalcs() {
         let tg = document.getElementById('outputs');
@@ -217,6 +223,28 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                 link.setAttribute('href', hyperlink);
                 li.appendChild(link);
             }
+
+            // other conversions
+            li.appendChild((() => {
+                const ul = document.createElement('ul');
+                for (let [unit, map] of Object.entries(el.conversions)) {
+                    const ll = document.createElement('li');
+                    const a = document.createElement('a');
+                    const newHash = `#num=${map.val}&mul=0&unit=${map.unitNorm}`;
+                    a.setAttribute('href', newHash);
+                    a.innerHTML = `${map.natval} ${map.unitLabel}`;
+                    a.addEventListener('click', (e) => {
+                        // TODO: tohle znamena, ze nefunguje historie :(
+                        location.hash = newHash;
+                        initFromHash();
+                    })
+                    ll.appendChild(a)
+                    ul.appendChild(ll);
+                }
+                return ul;
+            })());
+            
+            
             ul.appendChild(li);
         }
         tg.appendChild(ul);

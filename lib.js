@@ -41,91 +41,236 @@ let unitConv = {
     'pb': 1000 * 1000 * 1000 * 1000 * 1000,
 };
 
-let convTg = {
-    // kg
-    'Váha': [
-        [ 1/6, 'Kč ve víčkách'],
-        [ 1150, 'vozů Škoda Fabia'],
-        [ 439985, 'Boeingů 747-8'],
-        [ 2.7 / 1000, 'koleček paprikáše'],
-        [ 240 / 1000, 'hamburgerů (Big Mac)', ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
-    ],
-    // m^2
-    'Rozloha': [
-        [ 42255, 'Václaváků'], // wiki říká 682 * 60, ale Cíba kouká do katastru
-        // Karlák?
-        [ 105 * 68, 'fotbalových hřišť v Edenu'],
-        [ 310.5 * 202.5, 'Strahovských stadionů'],
-        [ 11.626 * 1000 * 1000, 'nádrží Slapy'],
-        [ 496 * 1000 * 1000, 'rozloh Prahy'],
-        [ 78866 * 1000 * 1000, 'rozloh ČR'],
-        [ 696241 * 1000 * 1000, 'rozloh Texasu'],
-        [ 4262 * 1732 / (1000 * 1000), 'Fabií Combi'],
-        [ 160 * 200 / (100 * 100), 'postelí (šířka 160 cm)'],
-        [ 5.5 * 5.5 / (100 * 100), 'koleček paprikáše'],
-    ],
-    // kč
-    'Cena': [
-        [ 6, 'kilogramů víček'], // víčka - 6 Kč/kg
-        [ 29, 'cheeseburgerů'],
-        [ 150, 'obědů'],
-        // tuzemaku, vicek, platu poslance, iphonu, casopisu vlasta
-        [ 29346, 'průměrných mezd'],
-        [ 37046, 'průměrných mezd v Praze'],
-        [ 269900, 'vozů Škoda Fabia', ['http://www.skoda-auto.cz/modely/fabia/fabia']],
-        [ 1500000000, 'okresních nemocnic', ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717']],
-        [ 152 * 1000 * 1000, 'kilometrů dálnic', ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/']],
-        [ 88 * 1000 * 1000 * 1000, 'majetků Andreje Babiše'],
+const convTgObj = [
+    {
+        label: 'vozů Škoda Fabia',
+        conversions: {
+            'Vzdálenost': [ 3.992 ],
+            // 'Objem': [ 315 / 1000, 'plných kufrů Škody Fabia'], // TODO: tohle jsou kufry, ne cely auta, takze to je nefer
+            'Cena': [ 269900, ['http://www.skoda-auto.cz/modely/fabia/fabia']],
+            'Váha': [ 1150 ],
+            'Rozloha': [ 4262 * 1732 / (1000 * 1000) ],
+        },
+    },
+    {
+        label: 'koleček paprikáše',
+        conversions: {
+            'Váha': [ 2.7 / 1000 ],
+            'Rozloha': [ 5.5 * 5.5 / (100 * 100) ],
+            'Cena': [ 229 / 370.37037037 ],
+            'Vzdálenost': [ 0.2 / 100 ],
+        },
+    },
+    {
+        label: 'víček',
+        conversions: {
+            'Váha': [ 1/500 ],
+            'Cena': [ 7 * 1/500 ],
+        },
+    },
+    {
+        label: 'disket',
+        conversions: {
+            'Rozloha': [ 8.9 * 9.3 / (100 * 100) ],
+            'Data': [ 1440 * 1000 ],
+        },
+    },
+    {
+        label: 'Václaváků',
+        conversions: {
+            'Rozloha': [ 42255 ], // wiki říká 682 * 60
+        },
+    },
+    {
+        label: 'Českých republik',
+        conversions: {
+            'Osob': [ 10578820 ],
+            'Rozloha': [ 78866 * 1000 * 1000 ],
+        },
+    },
+    {
+        label: 'Prah',
+        conversions: {
+            // TODO: pocet osob
+            'Rozloha': [ 496 * 1000 * 1000 ],
+        },
+    },
+    {
+        label: 'cheeseburgerů',
+        conversions: {
+            'Cena': [ 29 ],
+        },
+    },
+    {
+        label: 'Airbusů A380-800',
+        conversions: {
+            'Osob': [ 868 ],
+            'Váha': [ 276800 ],
+            'Vzdálenost': [ 73 ],
+        },
+    },
+    {
+        label: 'stadionů Wembley',
+        conversions: {
+            'Osob': [ 90000 ],
+            'Rozloha': [ 105*68 ],
+            'Cena': [ 23.927 * 1000 * 1000 * 1000 ],
+        }
+    },
+    {
+        label: 'O2 Arén',
+        conversions: {
+            'Osob': [ 17360 ],
+            'Rozloha': [ 105*68 ],
+            'Cena': [ 8 * 1000 * 1000 * 1000 ],
+        }
+    },
+    {
+        label: 'stadionů Strahov',
+        conversions: {
+            'Rozloha': [ 310.5 * 202.5 ],
+            'Osob': [ 250000 ],
+
+        },
+    },
+    {
+        label: 'hamburgerů (Big Mac)',
+        conversions: {
+            'Váha': [ 240 / 1000, ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
+            // 'Cena': [ null, 'hamburgerů (Big Mac)' ] // TODO
+        },
+    },
+    // TODO: vycistit nasledujici
+    {
+        label: "fotbalových hřišť v Edenu",
+        conversions: { "Rozloha": [ 7140 ], },
+    },
+    {
+        label: "nádrží Slapy",
+        conversions: { "Rozloha": [ 11626000 ], },
+    },
+    {
+        label: "rozloh Texasu",
+        conversions: { "Rozloha": [ 696241000000 ], },
+    },
+    {
+        label: "postelí (šířka 160 cm)",
+        conversions: { "Rozloha": [ 3.2 ], },
+    },
+    {
+        label: "obědů",
+        conversions: { "Cena": [ 150 ], },
+    },
+    {
+        label: "průměrných mezd",
+        conversions: { "Cena": [ 29346 ], },
+    },
+    {
+        label: "průměrných mezd v Praze",
+        conversions: { "Cena": [ 37046 ], },
+    },
+    {
+        label: "okresních nemocnic",
+        conversions: { "Cena": [ 1500000000, ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717'] ], },
+    },
+    {
+        label: "kilometrů dálnic",
+        conversions: { "Cena": [ 152000000, ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/'] ], },
+    },
+    {
+        label: "majetků Andreje Babiše",
+        conversions: { "Cena": [ 88000000000 ], },
+    },
+    {
+        label: "let elektřiny pro ČR",
         // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
-        [ 245619500000, 'let elektřiny pro ČR', ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/']], // 245 mld 619 mil 500 tis;
-        [ 1309.3 * 1000 * 1000 * 1000, 'ročních rozpočtů Česka'], // 2017
-        [ 5, 'dětských plínek'],
-        [ 11.34, 'lahvových piv', ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779']],
-        [ 100, 'krabiček cigaret'],
-        [ 229, 'kilo paprikáše'],
-    ],
-    'Osob': [
-        [ 11, 'Klapzubových jedenáctek'],
-        [ 868, 'plných Airbusů A380-800'],
-        [ 17360, 'naplněných pražských O2 aren'],
-        [ 90000, 'naplněných Wembley'],
-        [ 250000, 'naplněných Strahovských stadionů'],
-        [ 10578820, 'Českých republik'],
-    ],
-    // m
-    'Vzdálenost': [
-        [ 3.992, 'vozů Škoda Fabia za sebou'],
-        [ 24.5, 'vagónů dlouhý vlak'],
-        [ 205 * 1000, 'krát z Prahy do Brna'],
-        [ 6371 * 1000, 'poloměrů Země'],
-        [ 40075 * 1000, 'krát okolo Země (na rovníku)'],
-        [ 384400 * 1000, 'krát ze Země na Měsíc'],
-        [ 149597870700, 'krát ze Země na Slunce (AU)'],
-        [ 0.2 / 100, 'koleček paprikáše'],
-    ],
-    // m^3
-    'Objem': [
-        [ 1/2000, 'půllitrů piva'],
-        [ 2500, 'olympijských bazénů'],
-        [ 315 / 1000, 'plných kufrů Škody Fabia'],
-        [ 16.5*1000*1000*100 / 1000, 'ročních spotřeb piva v ČR', ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj']],
-        [ 85*60*60 / (100*100*100), 'praček', ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
-    ],
-    'Data': [
-        [ 1440 * 1000, 'disket (3,5")'],
-        [ 700 * 1000 * 1000, 'CD'],
-        [ 4.7 * 1000 * 1000 * 1000, 'DVD'],
-        [ (16 * 1000 * 1000 * 1000 * 1000) * (1000 / 26.11), 'metrů 16TB disků na sobě', ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-    ],
-};
+        conversions: { "Cena": [ 245619500000, ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/'] ], },
+    },
+    {
+        label: "ročních rozpočtů Česka",
+        conversions: { "Cena": [ 1309300000000 ], },
+    },
+    {
+        label: "dětských plínek",
+        conversions: { "Cena": [ 5 ], },
+    },
+    {
+        label: "lahvových piv",
+        conversions: { "Cena": [ 11.34, ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779'] ], },
+    },
+    {
+        label: "krabiček cigaret",
+        conversions: { "Cena": [ 100 ], },
+    },
+    {
+        label: "Klapzubových jedenáctek",
+        conversions: { "Osob": [ 11 ], },
+    },
+    {
+        label: "vagónů dlouhý vlak",
+        conversions: { "Vzdálenost": [ 24.5 ], },
+    },
+    {
+        label: "krát z Prahy do Brna",
+        conversions: { "Vzdálenost": [ 205000 ], },
+    },
+    {
+        label: "poloměrů Země",
+        conversions: { "Vzdálenost": [ 6371000 ], },
+    },
+    {
+        label: "krát okolo Země (na rovníku)",
+        conversions: { "Vzdálenost": [ 40075000 ], },
+    },
+    {
+        label: "krát ze Země na Měsíc",
+        conversions: { "Vzdálenost": [ 384400000 ], },
+    },
+    {
+        label: "krát ze Země na Slunce (AU)",
+        conversions: { "Vzdálenost": [ 149597870700 ], },
+    },
+    {
+        label: "půllitrů piva",
+        conversions: { "Objem": [ 0.0005 ], },
+    },
+    {
+        label: "olympijských bazénů",
+        conversions: { "Objem": [ 2500 ], },
+    },
+    {
+        label: "ročních spotřeb piva v ČR",
+        conversions: { "Objem": [ 1650000, ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj'] ], },
+    },
+    {
+        label: "praček",
+        conversions: { "Objem": [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']], },
+    },
+    {
+        label: "CD",
+        conversions: { "Data": [ 700000000 ], },
+    },
+    {
+        label: "DVD",
+        conversions: { "Data": [ 4700000000 ], },
+    },
+    {
+        label: "metrů 16TB disků na sobě",
+        conversions: {
+            // TODO: rozmery, vaha
+            "Data": [ 612792033703561.9, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+        },
+    }
+]
 
 let units = {
-    'Váha': 'kg',
-    'Rozloha': 'm²',
-    'Cena': 'Kč',
-    'Osob': 'lidí',
-    'Vzdálenost': 'm',
-    'Data': 'bajtů',
+    'Váha': ['kg', 'kg'],
+    'Rozloha': ['m2', 'm²'],
+    'Cena': ['kc', 'Kč'],
+    'Osob': ['1', 'lidí'],
+    'Objem': ['m3', 'm³'],
+    'Vzdálenost': ['m', 'm'], // TODO: chtelo by to rozlisit vzdalenost a vysku, jestli to pujde
+    'Data': ['b', 'bajtů'],
 }
 
 // functions
@@ -173,14 +318,30 @@ function numToText(number, mul, unit, gr) {
     num *= unitConv[unit];
 
     let res = [];
-    convTg[gr].sort((a, b) => a[0] - b[0]);
-    for (let el of convTg[gr]) {
+    // convTg[gr].sort((a, b) => a[0] - b[0]); // TODO: sort res?
+    for (let conv of convTgObj) {
+        const el = conv.conversions[gr];
+        if (!el) {
+            continue;
+        }
         let nval = natVal(num / el[0]);
+        let conversions = {};
+        for (let [tp, mp] of Object.entries(conv.conversions)) {
+            if (tp === gr) continue;
+
+            conversions[tp] = {
+                val: num / el[0] * mp[0],
+                natval: natVal(num / el[0] * mp[0]),
+                unitLabel: units[tp][1],
+                unitNorm: units[tp][0],
+            }
+        }
         res.push({
             value: nval,
-            unit: el[1],
-            sources: el[2],
-            normalisation: el[0] + ' ' + units[gr],
+            unit: conv.label,
+            sources: el[1],
+            conversions: conversions,
+            normalisation: el[0] + ' ' + units[gr][1],
         });
     }
 

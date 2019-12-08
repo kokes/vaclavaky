@@ -45,7 +45,7 @@
 <main>
     <div id='measures'>
     </div>
-
+Dočasně mimo provoz, připravujem lepší verzi
     <div id='question'>
 
     </div>
@@ -59,31 +59,32 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
 
 <script type='text/javascript' src='lib.js'></script>
 <script type='text/javascript'>
-    function initMeasures() {
-        const md = document.getElementById('measures');
-        let j = 0
-        for (let measure of Object.keys(convTg)) {
-            const elId = `measure_${j}`;
-            const inp = document.createElement('input');
-            inp.setAttribute('type', 'checkbox');
-            inp.setAttribute('id', elId);
-            inp.setAttribute('checked', 'checked');
-            inp.setAttribute('disabled', 'disabled');
+    // TODO: fixnout, po zmene z convTg na convTgObj zakomentovano
+    // function initMeasures() {
+    //     const md = document.getElementById('measures');
+    //     let j = 0
+    //     for (let measure of Object.keys(convTg)) {
+    //         const elId = `measure_${j}`;
+    //         const inp = document.createElement('input');
+    //         inp.setAttribute('type', 'checkbox');
+    //         inp.setAttribute('id', elId);
+    //         inp.setAttribute('checked', 'checked');
+    //         inp.setAttribute('disabled', 'disabled');
 
-            inp.addEventListener('change', () => {
-                // TODO
-            })
+    //         inp.addEventListener('change', () => {
+    //             // TODO
+    //         })
 
-            const label = document.createElement('label');
-            label.textContent = measure;
-            label.setAttribute('for', elId);
+    //         const label = document.createElement('label');
+    //         label.textContent = measure;
+    //         label.setAttribute('for', elId);
 
-            md.appendChild(inp);
-            md.appendChild(label);
+    //         md.appendChild(inp);
+    //         md.appendChild(label);
 
-            j += 1;
-        }
-    }
+    //         j += 1;
+    //     }
+    // }
 
     function randomElement(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
@@ -154,7 +155,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
     }
 
 
-    initMeasures();
+    // initMeasures();
     renderQuestion();
     document.getElementById('guess').focus();
 
