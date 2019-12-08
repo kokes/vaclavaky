@@ -115,6 +115,7 @@ let convTg = {
         [ 1440 * 1000, 'disket (3,5")'],
         [ 700 * 1000 * 1000, 'CD'],
         [ 4.7 * 1000 * 1000 * 1000, 'DVD'],
+        [ (16 * 1000 * 1000 * 1000 * 1000) * (1000 / 26.11), 'metrů 16TB disků na sobě', ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
     ],
 };
 
@@ -124,6 +125,7 @@ let units = {
     'Cena': 'Kč',
     'Osob': 'lidí',
     'Vzdálenost': 'm',
+    'Data': 'bajtů',
 }
 
 // functions
