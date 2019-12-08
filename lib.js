@@ -31,6 +31,14 @@ let unitConv = {
     'm3': 1,
     'hl': 0.1,
     'ft3': 1/35,
+
+    // normalize b
+    'b': 1,
+    'kb': 1000,
+    'mb': 1000 * 1000,
+    'gb': 1000 * 1000 * 1000,
+    'tb': 1000 * 1000 * 1000 * 1000,
+    'pb': 1000 * 1000 * 1000 * 1000 * 1000,
 };
 
 let convTg = {
@@ -102,6 +110,11 @@ let convTg = {
         [ 315 / 1000, 'plných kufrů Škody Fabia'],
         [ 16.5*1000*1000*100 / 1000, 'ročních spotřeb piva v ČR', ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj']],
         [ 85*60*60 / (100*100*100), 'praček', ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
+    ],
+    'Data': [
+        [ 1440 * 1000, 'disket (3,5")'],
+        [ 700 * 1000 * 1000, 'CD'],
+        [ 4.7 * 1000 * 1000 * 1000, 'DVD'],
     ],
 };
 
