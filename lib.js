@@ -39,7 +39,26 @@ let unitConv = {
     'gb': 1000 * 1000 * 1000,
     'tb': 1000 * 1000 * 1000 * 1000,
     'pb': 1000 * 1000 * 1000 * 1000 * 1000,
+
+    // normalize: minutes
+    's': 1,
+    'min': 1,
+    'h': 60,
+    'd': 60 * 24,
+    'w': 60 * 24 * 7,
+    'y': 60 * 24 * 365,
 };
+
+let units = {
+    'Váha': ['kg', 'kg'],
+    'Rozloha': ['m2', 'm²'],
+    'Cena': ['kc', 'Kč'],
+    'Osob': ['1', 'lidí'],
+    'Objem': ['m3', 'm³'],
+    'Vzdálenost': ['m', 'm'], // TODO: chtelo by to rozlisit vzdalenost a vysku, jestli to pujde
+    'Data': ['b', 'bajtů'],
+    'Čas': ['min', 'minut'],
+}
 
 const convTgObj = [
     {
@@ -139,6 +158,24 @@ const convTgObj = [
             'Váha': [ 240 / 1000, ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
             // 'Cena': [ null, 'hamburgerů (Big Mac)' ] // TODO
         },
+    },
+    {
+        label: 'vajíček na hniličku', conversions: { 'Čas': [ 4.5 ], },
+    },
+    {
+        label: 'pracovních dob', conversions: { 'Čas': [ 60 * 8 ], },
+    },
+    {
+        label: 'pořadů Nory Fridrichové', conversions: { 'Čas': [ 60 * 168 ], },
+    },
+    {
+        label: 'těhotenství', conversions: { 'Čas': [ 60 * 24 * 7 * 40 ], },
+    },
+    {
+        label: 'stáří vesmírů', conversions: { 'Čas': [ 60 * 24 * 365 * 13.772 * 1000 * 1000 * 1000 ], },
+    },
+    {
+        label: 'kilometrů chůze', conversions: { 'Čas': [ 60 / 5 ], },
     },
     // TODO: vycistit nasledujici
     {
@@ -262,16 +299,6 @@ const convTgObj = [
         },
     }
 ]
-
-let units = {
-    'Váha': ['kg', 'kg'],
-    'Rozloha': ['m2', 'm²'],
-    'Cena': ['kc', 'Kč'],
-    'Osob': ['1', 'lidí'],
-    'Objem': ['m3', 'm³'],
-    'Vzdálenost': ['m', 'm'], // TODO: chtelo by to rozlisit vzdalenost a vysku, jestli to pujde
-    'Data': ['b', 'bajtů'],
-}
 
 // functions
 
