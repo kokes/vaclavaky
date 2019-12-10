@@ -345,7 +345,6 @@ function numToText(number, mul, unit, gr) {
     num *= unitConv[unit];
 
     let res = [];
-    // convTg[gr].sort((a, b) => a[0] - b[0]); // TODO: sort res?
     for (let conv of convTgObj) {
         const el = conv.conversions[gr];
         if (!el) {
@@ -364,6 +363,7 @@ function numToText(number, mul, unit, gr) {
             }
         }
         res.push({
+            origVal: num / el[0],
             value: nval,
             unit: conv.label,
             sources: el[1],
@@ -371,6 +371,7 @@ function numToText(number, mul, unit, gr) {
             normalisation: el[0] + ' ' + units[gr][1],
         });
     }
+    res.sort((a, b) => b.origVal - a.origVal);
 
     return res;
 }
