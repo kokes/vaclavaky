@@ -175,127 +175,127 @@ const convTgObj = [
         label: 'stáří vesmírů', conversions: { 'Čas': [ 60 * 24 * 365 * 13.772 * 1000 * 1000 * 1000 ], },
     },
     {
-        label: 'kilometrů chůze', conversions: { 'Čas': [ 60 / 5 ], },
+        label: 'kilometrů chůze', conversions: { 'Čas': [ 60 / 5 ], 'Vzdálenost': [ 1000 ] },
     },
     // TODO: vycistit nasledujici
     {
-        label: "fotbalových hřišť v Edenu",
-        conversions: { "Rozloha": [ 7140 ], },
+        label: 'fotbalových hřišť v Edenu',
+        conversions: { 'Rozloha': [ 7140 ], },
     },
     {
-        label: "nádrží Slapy",
-        conversions: { "Rozloha": [ 11626000 ], },
+        label: 'nádrží Slapy',
+        conversions: { 'Rozloha': [ 11626000 ], 'Vzdálenost': [ 43000 ], 'Objem': [ 269.3 * 1000 * 1000 ] },
     },
     {
-        label: "rozloh Texasu",
-        conversions: { "Rozloha": [ 696241000000 ], },
+        label: 'rozloh Texasu',
+        conversions: { 'Rozloha': [ 696241000000 ], },
     },
     {
-        label: "postelí (šířka 160 cm)",
-        conversions: { "Rozloha": [ 3.2 ], },
+        label: 'postelí (šířka 160 cm)',
+        conversions: { 'Rozloha': [ 3.2 ], },
     },
     {
-        label: "obědů",
-        conversions: { "Cena": [ 150 ], },
+        label: 'obědů',
+        conversions: { 'Cena': [ 150 ], },
     },
     {
-        label: "průměrných mezd",
-        conversions: { "Cena": [ 29346 ], },
+        label: 'průměrných mezd',
+        conversions: { 'Cena': [ 29346 ], },
     },
     {
-        label: "průměrných mezd v Praze",
-        conversions: { "Cena": [ 37046 ], },
+        label: 'průměrných mezd v Praze',
+        conversions: { 'Cena': [ 37046 ], },
     },
     {
-        label: "okresních nemocnic",
-        conversions: { "Cena": [ 1500000000, ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717'] ], },
+        label: 'okresních nemocnic',
+        conversions: { 'Cena': [ 1500000000, ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717'] ], },
     },
     {
-        label: "kilometrů dálnic",
-        conversions: { "Cena": [ 152000000, ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/'] ], },
+        label: 'kilometrů dálnic',
+        conversions: { 'Cena': [ 152000000, ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/'] ], },
     },
     {
-        label: "majetků Andreje Babiše",
-        conversions: { "Cena": [ 88000000000 ], },
+        label: 'majetků Andreje Babiše',
+        conversions: { 'Cena': [ 88000000000 ], },
     },
     {
-        label: "let elektřiny pro ČR",
+        label: 'let elektřiny pro ČR',
         // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
-        conversions: { "Cena": [ 245619500000, ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/'] ], },
+        conversions: { 'Cena': [ 245619500000, ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/'] ], },
     },
     {
-        label: "ročních rozpočtů Česka",
-        conversions: { "Cena": [ 1309300000000 ], },
+        label: 'ročních rozpočtů Česka',
+        conversions: { 'Cena': [ 1309300000000 ], },
     },
     {
-        label: "dětských plínek",
-        conversions: { "Cena": [ 5 ], },
+        label: 'dětských plínek',
+        conversions: { 'Cena': [ 5 ], },
     },
     {
-        label: "lahvových piv",
-        conversions: { "Cena": [ 11.34, ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779'] ], },
+        label: 'lahvových piv',
+        conversions: { 'Cena': [ 11.34, ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779'] ], },
     },
     {
-        label: "krabiček cigaret",
-        conversions: { "Cena": [ 100 ], },
+        label: 'krabiček cigaret',
+        conversions: { 'Cena': [ 100 ], },
     },
     {
-        label: "Klapzubových jedenáctek",
-        conversions: { "Osob": [ 11 ], },
+        label: 'Klapzubových jedenáctek',
+        conversions: { 'Osob': [ 11 ], },
     },
     {
-        label: "vagónů dlouhý vlak",
-        conversions: { "Vzdálenost": [ 24.5 ], },
+        label: 'vagónů dlouhý vlak',
+        conversions: { 'Vzdálenost': [ 24.5 ], },
     },
     {
-        label: "krát z Prahy do Brna",
-        conversions: { "Vzdálenost": [ 205000 ], },
+        label: 'krát z Prahy do Brna',
+        conversions: { 'Vzdálenost': [ 205000 ], },
     },
     {
-        label: "poloměrů Země",
-        conversions: { "Vzdálenost": [ 6371000 ], },
+        label: 'poloměrů Země',
+        conversions: { 'Vzdálenost': [ 6371000 ], },
     },
     {
-        label: "krát okolo Země (na rovníku)",
-        conversions: { "Vzdálenost": [ 40075000 ], },
+        label: 'krát okolo Země (na rovníku)',
+        conversions: { 'Vzdálenost': [ 40075000 ], },
     },
     {
-        label: "krát ze Země na Měsíc",
-        conversions: { "Vzdálenost": [ 384400000 ], },
+        label: 'krát ze Země na Měsíc',
+        conversions: { 'Vzdálenost': [ 384400000 ], },
     },
     {
-        label: "krát ze Země na Slunce (AU)",
-        conversions: { "Vzdálenost": [ 149597870700 ], },
+        label: 'krát ze Země na Slunce (AU)',
+        conversions: { 'Vzdálenost': [ 149597870700 ], },
     },
     {
-        label: "půllitrů piva",
-        conversions: { "Objem": [ 0.0005 ], },
+        label: 'půllitrů piva',
+        conversions: { 'Objem': [ 0.0005 ], },
     },
     {
-        label: "olympijských bazénů",
-        conversions: { "Objem": [ 2500 ], },
+        label: 'olympijských bazénů',
+        conversions: { 'Objem': [ 2500 ], },
     },
     {
-        label: "ročních spotřeb piva v ČR",
-        conversions: { "Objem": [ 1650000, ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj'] ], },
+        label: 'ročních spotřeb piva v ČR',
+        conversions: { 'Objem': [ 1650000, ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj'] ], },
     },
     {
-        label: "praček",
-        conversions: { "Objem": [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']], },
+        label: 'praček',
+        conversions: { 'Váha': [ 80 ], 'Objem': [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']], },
     },
     {
-        label: "CD",
-        conversions: { "Data": [ 700000000 ], },
+        label: 'CD',
+        conversions: { 'Data': [ 700000000 ], },
     },
     {
-        label: "DVD",
-        conversions: { "Data": [ 4700000000 ], },
+        label: 'DVD',
+        conversions: { 'Data': [ 4700000000 ], },
     },
     {
-        label: "metrů 16TB disků na sobě",
+        label: 'metrů 16TB disků na sobě',
         conversions: {
             // TODO: rozmery, vaha
-            "Data": [ 612792033703561.9, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Data': [ 612792033703561.9, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
         },
     }
 ]
