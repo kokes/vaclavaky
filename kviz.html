@@ -45,7 +45,7 @@
 <main>
     <div id='measures'>
     </div>
-Dočasně mimo provoz, připravujem lepší verzi
+
     <div id='question'>
 
     </div>
@@ -59,11 +59,10 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
 
 <script type='text/javascript' src='lib.js'></script>
 <script type='text/javascript'>
-    // TODO: fixnout, po zmene z convTg na convTgObj zakomentovano
     // function initMeasures() {
     //     const md = document.getElementById('measures');
     //     let j = 0
-    //     for (let measure of Object.keys(convTg)) {
+    //     for (let measure of Object.keys(convTg)) { // TODO: jeste nekonvertovany
     //         const elId = `measure_${j}`;
     //         const inp = document.createElement('input');
     //         inp.setAttribute('type', 'checkbox');
@@ -99,19 +98,23 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         const qd = document.getElementById('question');
         qd.innerHTML = '';
 
-        const measure = randomElement(Object.keys(convTg));
+        let measures = new Set();
+        convTgObj.reduce((acc, val) => Object.keys(val.conversions).forEach(x => measures.add(x)));
+        const measure = randomElement(Array.from(measures));
 
-        let targets = JSON.parse(JSON.stringify(convTg[measure])); // nechcem mazat reálný data, musíme je duplikovat
+        let targets = convTgObj.filter(x => x.conversions.hasOwnProperty(measure));
+        targets = JSON.parse(JSON.stringify(targets)); // nechcem mazat reálný data, musíme je duplikovat
         let qs = [];
         shuffleArray(targets);
         qs.push(targets.pop());
         shuffleArray(targets);
         qs.push(targets.pop());
-        qs.sort((a, b) => a[0] - b[0]); // chceme tu menší/lehčí/levnější věc jako první, ať ta otázka má smysl
+         // chceme tu menší/lehčí/levnější věc jako první, ať ta otázka má smysl
+        qs.sort((a, b) => a.conversions[measure][0] - b.conversions[measure][0]);
 
-        qd.innerHTML = `${measure}: <input id='guess'></input> <em>${qs[0][1]}</em> se vejde do <em>${qs[1][1]}</em>`;
+        qd.innerHTML = `${measure}: <input id='guess'></input> <em>${qs[0].label}</em> se vejde do <em>${qs[1].label}</em>`;
 
-        const answer = qs[1][0] / qs[0][0];
+        const answer = qs[1].conversions[measure] / qs[0].conversions[measure];
         console.log(`Pro podvodníčky tu máme odpověď: ${answer}`);
 
 
