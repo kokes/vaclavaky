@@ -160,6 +160,13 @@ const convTgObj = [
         },
     },
     {
+        label: 'bytů v Praze (2+kk)',
+        conversions: {
+            'Rozloha': [ 50 ],
+            'Cena': [ 5*1000*1000 ],
+        },
+    },
+    {
         label: 'vajíček na hniličku', conversions: { 'Čas': [ 4.5 ], },
     },
     {
