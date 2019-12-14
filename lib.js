@@ -327,6 +327,14 @@ function numFormat(val) {
 
 function natVal(val) {
     let nat = [
+        [36, 'sextilionů'],
+        [33, 'kvintiliard'],
+        [30, 'kvintilionů'],
+        [27, 'kvadriliard'],
+        [24, 'kvadrilionů'],
+        [21, 'triliard'],
+        [18, 'trilionů'],
+        [15, 'biliard'],
         [12, 'bilionů'],
         [9, 'miliard'],
         [6, 'milionů'],
