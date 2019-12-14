@@ -71,6 +71,12 @@
             text-align: center;
             color: rgb(166, 166, 166);
         }
+        strong.localval {
+            display: none;
+        }
+        strong.natval, strong.localval {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -213,6 +219,35 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                 let node = document.createElement('strong');
                 node.innerHTML = el.value + ' ';
                 node.setAttribute('title', title);
+
+                node.setAttribute('class', 'natval');
+                node.addEventListener('click', () => {
+                    for (let el of document.getElementsByClassName('localval')) {
+                        el.style.display = 'inline';
+                    }
+                    for (let el of document.getElementsByClassName('natval')) {
+                        el.style.display = 'none';
+                    }
+                })
+                return node;
+            })());
+
+            li.appendChild((() => {
+                let node = document.createElement('strong');
+                node.innerHTML = el.origVal + ' ';
+                if (el.origVal >= 1000)
+                    node.innerHTML = el.origVal.toLocaleString('cs') + ' ';
+                node.setAttribute('title', title);
+
+                node.setAttribute('class', 'localval');
+                node.addEventListener('click', () => {
+                    for (let el of document.getElementsByClassName('localval')) {
+                        el.style.display = 'none';
+                    }
+                    for (let el of document.getElementsByClassName('natval')) {
+                        el.style.display = 'inline';
+                    }
+                })
                 return node;
             })());
 
