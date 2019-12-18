@@ -168,6 +168,7 @@ const convTgObj = [
     },
     {
         label: 'plejtváků obrovských',
+        // oboji prumer dospelych v severnim pacifiku, samci a samice se trochu lisi
         conversions: {
             'Vzdálenost': [ 24.5 ],
             'Váha': [ 106 * 1000 ],
