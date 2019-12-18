@@ -167,6 +167,13 @@ const convTgObj = [
         },
     },
     {
+        label: 'plejtváků obrovských',
+        conversions: {
+            'Vzdálenost': [ 24.5 ],
+            'Váha': [ 106 * 1000 ],
+        },
+    },
+    {
         label: 'vajíček na hniličku', conversions: { 'Čas': [ 4.5 ], },
     },
     {
