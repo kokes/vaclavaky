@@ -164,13 +164,12 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         }
     }
 
-    document.getElementById('num').addEventListener('change', renderCalcs);
-    document.getElementById('num').addEventListener('keyup', renderCalcs);
-    document.getElementById('mul').addEventListener('change', renderCalcs);
-    document.getElementById('unit').addEventListener('change', renderCalcs);
+    document.getElementById('num').addEventListener('change', constructHash);
+    document.getElementById('num').addEventListener('keyup', constructHash);
+    document.getElementById('mul').addEventListener('change', constructHash);
+    document.getElementById('unit').addEventListener('change', constructHash);
 
-    // init
-    function initFromHash() {
+    function renderFromHash() {
         let hs = window.location.hash;
         if (hs.length > 0) {
             let allowed = ['num', 'mul', 'unit'];
@@ -185,17 +184,27 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             renderCalcs();
         }
     }
-    initFromHash();
+    window.addEventListener('hashchange', renderFromHash, false);
+    // renderuj kdyz nekdo nacte jako novou stranku s existujicim hashem
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+
+    function readInputs() {
+        return {
+            num: document.getElementById('num').value,
+            mul: document.getElementById('mul').value,
+            unit: document.getElementById('unit').value,
+        }
+    }
+
+    function constructHash() {
+        let inputs = readInputs()
+        window.location.hash = Object.keys(inputs).map(k => k + '=' + encodeURIComponent(inputs[k])).join('&');
+    }
 
     function renderCalcs() {
         let tg = document.getElementById('outputs');
         wipeElement(tg);
-        let inputs = {
-            num: document.getElementById('num').value,
-            mul: document.getElementById('mul').value,
-            unit: document.getElementById('unit').value
-        }
-        window.location.hash = Object.keys(inputs).map(k => k + '=' + encodeURIComponent(inputs[k])).join('&');
+        const inputs = readInputs()
 
         // get optgroup
         let op = document.getElementById('unit');
