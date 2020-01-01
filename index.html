@@ -86,11 +86,6 @@
         <input type='number' id='num' placeholder='kolik to měří/váží/stojí?' />
 
         <select id='mul'>
-            <option value='0'>jednotek</option>
-            <option value='3'>tisíc</option>
-            <option value='6'>milionů</option>
-            <option value='9'>miliard</option>
-            <option value='12'>bilionů</option>
         </select>
 
         <select id='unit'>
@@ -162,6 +157,14 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         while (el.firstChild) {
             el.removeChild(el.firstChild);
         }
+    }
+
+    const selMul = document.getElementById('mul');
+    for (let [pow, text] of Object.entries(natMap)) {
+        let opt = document.createElement('option');
+        opt.setAttribute('value', pow);
+        opt.innerText = text;
+        selMul.append(opt);
     }
 
     document.getElementById('num').addEventListener('change', constructHash);
