@@ -285,7 +285,8 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                 for (let [unit, map] of Object.entries(el.conversions)) {
                     const ll = document.createElement('li');
                     const a = document.createElement('a');
-                    const newHash = `#num=${map.val}&mul=0&unit=${map.unitNorm}`;
+                    const {baseVal, pow} = maxPow(map.val)
+                    const newHash = `#num=${baseVal}&mul=${pow}&unit=${map.unitNorm}`;
                     a.setAttribute('href', newHash);
                     a.innerHTML = `${map.natval} ${map.unitLabel}`;
                     a.addEventListener('click', (e) => {

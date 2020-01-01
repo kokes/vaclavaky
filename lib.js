@@ -349,19 +349,26 @@ const natMap = {
     0: 'jednotek',
 }
 
-function natVal(val) {
+// u hodnoty urci, jestli ji muzem vyjadrit jako AeB, např. 1300 = 1.3e3
+function maxPow(val) {
     // jdi od nejvyssich mocnin k nejnizsim - at chytnem tu nejvyssi moznou
     const convs = Object.entries(natMap).sort(x => -parseInt(x[0]));
     for (let [pow, text] of convs) {
         if (val >= Math.pow(10, pow)) {
             let nval = val / Math.pow(10, pow);
-            // pro jednotky nepsat jednotky, jen pro tisíce a výš
-            if (text === 'jednotek')
-                return numFormat(nval);
-            return `${numFormat(nval)} ${text}`;
+            return { baseVal: nval, pow: parseInt(pow) }
         }
     }
-    return numFormat(val);
+    return { baseVal: val, pow: 0 }
+}
+
+function natVal(val) {
+    const { baseVal, pow } = maxPow(val)
+    // pro jednotky nepsat jednotky, jen pro tisíce a výš
+    if (pow === 0)
+        return numFormat(baseVal);
+
+    return `${numFormat(baseVal)} ${natMap[pow]}`;
 }
 
 function numToText(number, mul, unit, gr) {
