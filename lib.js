@@ -175,6 +175,14 @@ const convTgObj = [
         },
     },
     {
+        label: 'balónků plných hélia (pro vzlet)',
+        conversions: {
+            // balonek ma 30 cm v prumeru, cca, tak vemem 4/3 * pi * r^3
+            'Objem': [ (4/3) * Math.PI * (0.15**3), ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
+            'Váha': [ ((4/3) * Math.PI * (15**3) / 1000) / 1000, ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
+        },
+    },
+    {
         label: 'vajíček na hniličku', conversions: { 'Čas': [ 4.5 ], },
     },
     {
