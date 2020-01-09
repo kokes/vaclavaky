@@ -310,7 +310,7 @@ const convTgObj = [
         label: 'traktorů pro mladé a začínající zemědělce',
         conversions: {
             'Váha': [ 1710, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], 
-            'Cena': [ 511615, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ]
+            'Cena': [ 511615, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
             'Vzdálenost': [ 3.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
         },
     },
