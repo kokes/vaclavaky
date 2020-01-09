@@ -268,7 +268,7 @@ const convTgObj = [
     },
     {
         label: 'traktorů pro mladé a začínající zemědělce dlouhá kolona',
-        conversions: { 'Vzdálenost': [ 4.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah'] ], },
+        conversions: { 'Vzdálenost': [ 4.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], },
     },
     {
         label: 'vagónů dlouhý vlak',
@@ -309,6 +309,13 @@ const convTgObj = [
     {
         label: 'praček',
         conversions: { 'Váha': [ 80 ], 'Objem': [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']], },
+    },
+    {
+        label: 'traktorů pro mladé a začínající zemědělce',
+        conversions: {
+            'Váha': [ 1710, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], 
+            'Cena': [ 511615, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ]
+        },
     },
     {
         label: 'CD',
