@@ -267,10 +267,6 @@ const convTgObj = [
         conversions: { 'Osob': [ 11 ], },
     },
     {
-        label: 'traktorů pro mladé a začínající zemědělce dlouhá kolona',
-        conversions: { 'Vzdálenost': [ 4.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], },
-    },
-    {
         label: 'vagónů dlouhý vlak',
         conversions: { 'Vzdálenost': [ 24.5 ], },
     },
@@ -315,6 +311,7 @@ const convTgObj = [
         conversions: {
             'Váha': [ 1710, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], 
             'Cena': [ 511615, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ]
+            'Vzdálenost': [ 3.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
         },
     },
     {
