@@ -268,7 +268,7 @@ const convTgObj = [
     },
     {
         label: 'traktorů pro mladé a začínající zemědělce dlouhá kolona',
-        conversions: { 'Vzdálenost': [ 5.71, ['https://www.zetor.cz/zetor-proxima-technicke-parametry'] ], },
+        conversions: { 'Vzdálenost': [ 4.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah'] ], },
     },
     {
         label: 'vagónů dlouhý vlak',
