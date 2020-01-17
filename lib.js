@@ -331,8 +331,8 @@ const convTgObj = [
         },
     },
     {
-        label: 'informačních systémů pro evidenci vozidel v systému časového zpoplatnění',
-        conversions: { 'Cena': [ 484379403, ['https://smlouvy.gov.cz/smlouva/11357620'] ], },
+        label: 'informačních systémů pro evidenci vozidel',
+        conversions: { 'Cena': [ 484379403, ['https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok', 'https://smlouvy.gov.cz/smlouva/11357620'] ], },
     }
 ]
 
