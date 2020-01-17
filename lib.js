@@ -334,6 +334,10 @@ const convTgObj = [
             'Objem': [ (26.11 * 101.85 * 146.99) / (1000 * 1000 * 1000), ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
         },
     },
+    {
+        label: 'informačních systémů pro evidenci vozidel',
+        conversions: { 'Cena': [ 484379403, ['https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok', 'https://smlouvy.gov.cz/smlouva/11357620'] ], },
+    }
 ]
 
 // functions
