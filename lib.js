@@ -329,6 +329,10 @@ const convTgObj = [
             // TODO: rozmery, vaha
             'Data': [ 612792033703561.9, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
         },
+    },
+    {
+        label: 'informačních systémů pro evidenci vozidel v systému časového zpoplatnění',
+        conversions: { 'Cena': [ 400000000, ['https://smlouvy.gov.cz/smlouva/11357620'] ], },
     }
 ]
 
