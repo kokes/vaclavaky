@@ -114,7 +114,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
 
         qd.innerHTML = `${measure}: <input id='guess'></input> <em>${qs[0].label}</em> se vejde do <em>${qs[1].label}</em>`;
 
-        const answer = qs[1].conversions[measure] / qs[0].conversions[measure];
+        const answer = qs[1].conversions[measure][0] / qs[0].conversions[measure][0];
         console.log(`Pro podvodníčky tu máme odpověď: ${answer}`);
 
 

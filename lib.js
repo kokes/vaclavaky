@@ -324,10 +324,14 @@ const convTgObj = [
         conversions: { 'Data': [ 4700000000 ], },
     },
     {
-        label: 'metrů 16TB disků na sobě',
+        label: 'pevných disků',
         conversions: {
-            // TODO: rozmery, vaha
-            'Data': [ 612792033703561.9, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Data': [ 16 * 1024 * 1024 * 1024 * 1024, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Cena': [ 13890, ['https://www.alza.cz/seagate-ironwolf-16tb-d5665111.htm?o=1']],
+            'Váha': [ 0.670, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Rozloha': [ (101.85 * 146.99) / (1000 * 1000), ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Vzdálenost': [ 2.611 / 100, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Objem': [ (26.11 * 101.85 * 146.99) / (1000 * 1000 * 1000), ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
         },
     },
     {
