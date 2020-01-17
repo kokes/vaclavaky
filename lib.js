@@ -332,7 +332,7 @@ const convTgObj = [
     },
     {
         label: 'informačních systémů pro evidenci vozidel v systému časového zpoplatnění',
-        conversions: { 'Cena': [ 400000000, ['https://smlouvy.gov.cz/smlouva/11357620'] ], },
+        conversions: { 'Cena': [ 400313557, ['https://smlouvy.gov.cz/smlouva/11357620'] ], },
     }
 ]
 
