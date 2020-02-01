@@ -291,6 +291,16 @@ const convTgObj = [
         conversions: { 'Vzdálenost': [ 149597870700 ], },
     },
     {
+        label: "planet Země",
+        conversions: {
+            'Osob': [ 7713468000, [ 'https://population.un.org/wpp/Publications/Files/WPP2019-Wallchart.pdf' ]],
+            'Rozloha': [ 510072000 * 1000 * 1000, ['https://en.wikipedia.org/wiki/Earth']],
+            'Objem': [ 1.08321 * Math.pow(10, 12) * 1000 * 1000 * 1000, ['https://en.wikipedia.org/wiki/Earth']],
+            'Váha': [ 5.97237 * Math.pow(10, 24), ['https://en.wikipedia.org/wiki/Earth']],
+            'Čas': [ 4.54 * Math.pow(10, 9) * (60 * 24 * 365), ['https://en.wikipedia.org/wiki/Age_of_the_Earth']],
+        }
+    },
+    {
         label: 'půllitrů piva',
         conversions: { 'Objem': [ 0.0005 ], },
     },
