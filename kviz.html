@@ -139,7 +139,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             const evl = document.createElement('div');
             evl.setAttribute('id', 'evaluation');
 
-            if (err === 0) {
+            if (fguess.toFixed(2) === answer.toFixed(2)) {
                 evl.textContent = `Naprosto přesně!`;
             } else if (err < 1) {
                 evl.textContent = `Řádově můžem uznat! Přesně to je ${answer.toFixed(2)}`;
