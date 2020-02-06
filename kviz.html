@@ -134,15 +134,15 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             const guess = document.getElementById('guess').value;
             // TODO: validace, že guess je číslo
             const fguess = parseFloat(guess);
-            const err = Math.abs(fguess/answer - 1);
+            const err = Math.abs(Math.log10(fguess) - Math.log10(answer));
 
             const evl = document.createElement('div');
             evl.setAttribute('id', 'evaluation');
 
             if (err === 0) {
                 evl.textContent = `Naprosto přesně!`;
-            } else if (err < .1) {
-                evl.textContent = `Těsně vedle! Správně to je ${answer.toFixed(2)}`;
+            } else if (err < 1) {
+                evl.textContent = `Řádově můžem uznat! Přesně to je ${answer.toFixed(2)}`;
             } else {
                 evl.textContent = `Neni to tak, správně to je ${answer.toFixed(2)}`;
             }
