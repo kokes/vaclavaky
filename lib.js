@@ -314,7 +314,11 @@ const convTgObj = [
     },
     {
         label: 'praček',
-        conversions: { 'Váha': [ 80 ], 'Objem': [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']], },
+        conversions: {
+            'Váha': [ 80 ],
+            'Objem': [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
+            'Rozloha': [ 0.6*0.6, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
+    },
     },
     {
         label: 'traktorů pro mladé a začínající zemědělce',
