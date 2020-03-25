@@ -351,6 +351,10 @@ const convTgObj = [
     {
         label: 'informačních systémů pro evidenci vozidel',
         conversions: { 'Cena': [ 484379403, ['https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok', 'https://smlouvy.gov.cz/smlouva/11357620'] ], },
+    },
+    {
+        label: 'rozpětí křídel orlů skalních',
+        conversions: { 'Vzdálenost': [ 2.025, ['https://twitter.com/_Karoliinka_/status/1242900637660176387', 'https://www.allaboutbirds.org/guide/Golden_Eagle/id'] ], },
     }
 ]
 
