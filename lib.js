@@ -355,7 +355,19 @@ const convTgObj = [
     {
         label: 'rozpětí křídel orlů skalních',
         conversions: { 'Vzdálenost': [ 2.025, ['https://twitter.com/_Karoliinka_/status/1242900637660176387', 'https://www.allaboutbirds.org/guide/Golden_Eagle/id'] ], },
-    }
+    },
+    {
+        label: 'rolí toaletního papíru',
+        conversions: {
+            'Vzdálenost': [ 19.26875, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
+            'Cena': [ 12.4375, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
+            'Rozloha': [ 19.26875*(9.5/100), ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
+
+        },
+    },
+
+
+    // https://www.rohlik.cz/hledat/toaletn%C3%AD%20pap%C3%ADr?productPopup=1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks
 ]
 
 // functions
