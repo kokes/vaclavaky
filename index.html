@@ -270,6 +270,13 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                 return node;
             })());
 
+            if (el.description) {
+                const dsc = document.createTextNode(` (${el.description})`);
+                const sm = document.createElement('small');
+                sm.appendChild(dsc);
+                li.appendChild(sm);
+            }
+
             // li.innerHTML = `<strong>${el.value}</strong> <span>${el.unit}</span>`;
             for (let hyperlink of (el.sources || [])) {
                 let link = document.createElement('a');
@@ -294,6 +301,14 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                         location.hash = newHash;
                     })
                     ll.appendChild(a)
+
+                    if (map.description) {
+                        const dsc = document.createTextNode(` (${map.description})`);
+                        const sm = document.createElement('small');
+                        sm.appendChild(dsc);
+                        ll.appendChild(sm);
+                    }
+
                     ul.appendChild(ll);
                 }
                 return ul;

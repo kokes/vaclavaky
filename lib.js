@@ -66,18 +66,18 @@ const convTgObj = [
         conversions: {
             'Vzdálenost': [ 3.992 ],
             // 'Objem': [ 315 / 1000, 'plných kufrů Škody Fabia'], // TODO: tohle jsou kufry, ne cely auta, takze to je nefer
-            'Cena': [ 269900, ['http://www.skoda-auto.cz/modely/fabia/fabia']],
+            'Cena': [ 269900, null, ['https://www.skoda-auto.cz/modely/fabia/fabia']],
             'Váha': [ 1150 ],
-            'Rozloha': [ 4262 * 1732 / (1000 * 1000) ],
+            'Rozloha': [ 4262 * 1732 / (1000 * 1000), 'půdorys auta' ],
         },
     },
     {
         label: 'koleček paprikáše',
         conversions: {
             'Váha': [ 2.7 / 1000 ],
-            'Rozloha': [ 5.5 * 5.5 / (100 * 100) ],
+            'Rozloha': [ 5.5 * 5.5 / (100 * 100), 'vyskádaných do mřížky'],
             'Cena': [ 229 / 370.37037037 ],
-            'Vzdálenost': [ 0.2 / 100 ],
+            'Vzdálenost': [ 0.2 / 100 , 'na tloušťku'],
         },
     },
     {
@@ -155,7 +155,7 @@ const convTgObj = [
     {
         label: 'hamburgerů (Big Mac)',
         conversions: {
-            'Váha': [ 240 / 1000, ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
+            'Váha': [ 240 / 1000, null, ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
             // 'Cena': [ null, 'hamburgerů (Big Mac)' ] // TODO
         },
     },
@@ -178,8 +178,8 @@ const convTgObj = [
         label: 'balónků plných hélia (pro vzlet)',
         conversions: {
             // balonek ma 30 cm v prumeru, cca, tak vemem 4/3 * pi * r^3
-            'Objem': [ (4/3) * Math.PI * (0.15**3), ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
-            'Váha': [ ((4/3) * Math.PI * (15**3) / 1000) / 1000, ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
+            'Objem': [ (4/3) * Math.PI * (0.15**3), null, ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
+            'Váha': [ ((4/3) * Math.PI * (15**3) / 1000) / 1000, null, ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
         },
     },
     {
@@ -231,11 +231,11 @@ const convTgObj = [
     },
     {
         label: 'okresních nemocnic',
-        conversions: { 'Cena': [ 1500000000, ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717'] ], },
+        conversions: { 'Cena': [ 1500000000, null, ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717'] ], },
     },
     {
         label: 'kilometrů dálnic',
-        conversions: { 'Cena': [ 152000000, ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/'] ], },
+        conversions: { 'Cena': [ 152000000, null, ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/'] ], },
     },
     {
         label: 'majetků Andreje Babiše',
@@ -244,7 +244,7 @@ const convTgObj = [
     {
         label: 'let elektřiny pro ČR',
         // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
-        conversions: { 'Cena': [ 245619500000, ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/'] ], },
+        conversions: { 'Cena': [ 245619500000, null, ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/'] ], },
     },
     {
         label: 'ročních rozpočtů Česka',
@@ -256,7 +256,7 @@ const convTgObj = [
     },
     {
         label: 'lahvových piv',
-        conversions: { 'Cena': [ 11.34, ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779'] ], },
+        conversions: { 'Cena': [ 11.34, null, ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779'] ], },
     },
     {
         label: 'krabiček cigaret',
@@ -293,11 +293,11 @@ const convTgObj = [
     {
         label: "planet Země",
         conversions: {
-            'Osob': [ 7713468000, [ 'https://population.un.org/wpp/Publications/Files/WPP2019-Wallchart.pdf' ]],
-            'Rozloha': [ 510072000 * 1000 * 1000, ['https://en.wikipedia.org/wiki/Earth']],
-            'Objem': [ 1.08321 * Math.pow(10, 12) * 1000 * 1000 * 1000, ['https://en.wikipedia.org/wiki/Earth']],
-            'Váha': [ 5.97237 * Math.pow(10, 24), ['https://en.wikipedia.org/wiki/Earth']],
-            'Čas': [ 4.54 * Math.pow(10, 9) * (60 * 24 * 365), ['https://en.wikipedia.org/wiki/Age_of_the_Earth']],
+            'Osob': [ 7713468000, null, ['https://population.un.org/wpp/Publications/Files/WPP2019-Wallchart.pdf' ]],
+            'Rozloha': [ 510072000 * 1000 * 1000, null, ['https://en.wikipedia.org/wiki/Earth']],
+            'Objem': [ 1.08321 * Math.pow(10, 12) * 1000 * 1000 * 1000, null, ['https://en.wikipedia.org/wiki/Earth']],
+            'Váha': [ 5.97237 * Math.pow(10, 24), null, ['https://en.wikipedia.org/wiki/Earth']],
+            'Čas': [ 4.54 * Math.pow(10, 9) * (60 * 24 * 365), null, ['https://en.wikipedia.org/wiki/Age_of_the_Earth']],
         }
     },
     {
@@ -310,23 +310,23 @@ const convTgObj = [
     },
     {
         label: 'ročních spotřeb piva v ČR',
-        conversions: { 'Objem': [ 1650000, ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj'] ], },
+        conversions: { 'Objem': [ 1650000, null, ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj'] ], },
     },
     {
         label: 'praček',
         conversions: {
             'Váha': [ 80 ],
-            'Objem': [ 0.306, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
-            'Rozloha': [ 0.6*0.6, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
+            'Objem': [ 0.306, null, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
+            'Rozloha': [ 0.6*0.6, null, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
     },
     },
     {
         label: 'traktorů pro mladé a začínající zemědělce',
         conversions: {
-            'Váha': [ 1710, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], 
-            'Cena': [ 511615, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
-            'Vzdálenost': [ 3.59, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
-            'Rozloha': [ 3.59 * 1.62, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
+            'Váha': [ 1710, null, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], 
+            'Cena': [ 511615, null, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
+            'Vzdálenost': [ 3.59, null, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
+            'Rozloha': [ 3.59 * 1.62, null, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
         },
     },
     {
@@ -338,30 +338,30 @@ const convTgObj = [
         conversions: { 'Data': [ 4700000000 ], },
     },
     {
-        label: 'pevných disků',
+        label: 'pevných disků (16 TB)',
         conversions: {
-            'Data': [ 16 * 1024 * 1024 * 1024 * 1024, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Cena': [ 13890, ['https://www.alza.cz/seagate-ironwolf-16tb-d5665111.htm?o=1']],
-            'Váha': [ 0.670, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Rozloha': [ (101.85 * 146.99) / (1000 * 1000), ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Vzdálenost': [ 2.611 / 100, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Objem': [ (26.11 * 101.85 * 146.99) / (1000 * 1000 * 1000), ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Data': [ 16 * 1024 * 1024 * 1024 * 1024, null, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Cena': [ 13890, null, ['https://www.alza.cz/seagate-ironwolf-16tb-d5665111.htm?o=1']],
+            'Váha': [ 0.670, null, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Rozloha': [ (101.85 * 146.99) / (1000 * 1000), 'půdorys disku', ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Vzdálenost': [ 2.611 / 100, 'naskládaných na sebe', ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
+            'Objem': [ (26.11 * 101.85 * 146.99) / (1000 * 1000 * 1000), null, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
         },
     },
     {
         label: 'informačních systémů pro evidenci vozidel',
-        conversions: { 'Cena': [ 484379403, ['https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok', 'https://smlouvy.gov.cz/smlouva/11357620'] ], },
+        conversions: { 'Cena': [ 484379403, null, ['https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok', 'https://smlouvy.gov.cz/smlouva/11357620'] ], },
     },
     {
         label: 'rozpětí křídel orlů skalních',
-        conversions: { 'Vzdálenost': [ 2.025, ['https://twitter.com/_Karoliinka_/status/1242900637660176387', 'https://www.allaboutbirds.org/guide/Golden_Eagle/id'] ], },
+        conversions: { 'Vzdálenost': [ 2.025, null, ['https://twitter.com/_Karoliinka_/status/1242900637660176387', 'https://www.allaboutbirds.org/guide/Golden_Eagle/id'] ], },
     },
     {
         label: 'rolí toaletního papíru',
         conversions: {
-            'Vzdálenost': [ 19.26875, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
-            'Cena': [ 12.4375, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
-            'Rozloha': [ 19.26875*(9.5/100), ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
+            'Vzdálenost': [ 19.26875, null, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
+            'Cena': [ 12.4375, null, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
+            'Rozloha': [ 19.26875*(9.5/100), null, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
 
         },
     },
@@ -370,7 +370,7 @@ const convTgObj = [
     // https://www.rohlik.cz/hledat/toaletn%C3%AD%20pap%C3%ADr?productPopup=1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks
     {
         label: 'tapírů nadél',
-        conversions: { 'Vzdálenost': [ 2, ['https://www.facebook.com/bionag/photos/a.1517805361845838/2326913190935047/?type=3&theater', 'https://cs.wikipedia.org/wiki/Tap%C3%ADrovit%C3%AD'] ], },
+        conversions: { 'Vzdálenost': [ 2, null, ['https://www.facebook.com/bionag/photos/a.1517805361845838/2326913190935047/?type=3&theater', 'https://cs.wikipedia.org/wiki/Tap%C3%ADrovit%C3%AD'] ], },
     },
 ]
 
@@ -456,15 +456,17 @@ function numToText(number, mul, unit, gr) {
                 natval: natVal(num / el[0] * mp[0]),
                 unitLabel: units[tp][1],
                 unitNorm: units[tp][0],
+                description: mp[1],
             }
         }
         res.push({
             origVal: num / el[0],
             value: nval,
             unit: conv.label,
-            sources: el[1],
+            sources: el[2],
             conversions: conversions,
             normalisation: el[0] + ' ' + units[gr][1],
+            description: el[1],
         });
     }
     res.sort((a, b) => b.origVal - a.origVal);
