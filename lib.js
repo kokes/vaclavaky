@@ -41,7 +41,7 @@ let unitConv = {
     'pb': 1000 * 1000 * 1000 * 1000 * 1000,
 
     // normalize: minutes
-    's': 1,
+    's': 1/60,
     'min': 1,
     'h': 60,
     'd': 60 * 24,
