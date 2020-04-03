@@ -9,9 +9,9 @@ let unitConv = {
 
     // normalize: kc
     'kc': 1,
-    'usd': 21.475, // 1/12/2017
-    'eur': 25.525,
-    'gbp': 28.967,
+    'usd': 25.535, // 3/4/2020 (cnb.cz)
+    'eur': 27.540,
+    'gbp': 31.347,
 
     // normalize: kg
     'kg': 1,
