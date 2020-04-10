@@ -305,6 +305,10 @@ const convTgObj = [
         conversions: { 'Objem': [ 0.0005 ], },
     },
     {
+        label: 'lidských vlasů',
+        conversions: { 'Vzdálenost': [ 75 * Math.pow(10, -6), 'na tloušťku', ['https://en.wikipedia.org/wiki/Hair%27s_breadth'] ], },
+    },
+    {
         label: 'olympijských bazénů',
         conversions: { 'Objem': [ 2500 ], },
     },
