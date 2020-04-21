@@ -369,12 +369,16 @@ const convTgObj = [
 
         },
     },
-
-
-    // https://www.rohlik.cz/hledat/toaletn%C3%AD%20pap%C3%ADr?productPopup=1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks
     {
         label: 'tapírů nadél',
         conversions: { 'Vzdálenost': [ 2, null, ['https://www.facebook.com/bionag/photos/a.1517805361845838/2326913190935047/?type=3&theater', 'https://cs.wikipedia.org/wiki/Tap%C3%ADrovit%C3%AD'] ], },
+    },
+    {
+        label: 'koňských délek',
+        conversions: {
+            'Vzdálenost': [ 2.4, null, ['https://en.wikipedia.org/wiki/Horse_length'] ],
+            'Čas': [ (1/5) / 60, null, ['https://en.wikipedia.org/wiki/Horse_length'] ],
+        },
     },
 ]
 
