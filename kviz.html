@@ -139,12 +139,16 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
             const evl = document.createElement('div');
             evl.setAttribute('id', 'evaluation');
 
-            if (fguess.toFixed(2) === answer.toFixed(2)) {
+            let answerFixed = answer.toFixed(2);
+            if (answerFixed.endsWith('.00')) {
+                answerFixed = answerFixed.slice(0, -3);
+            }
+            if (fguess.toFixed(2) === answerFixed) {
                 evl.textContent = `Naprosto přesně!`;
             } else if (err < 1) {
-                evl.textContent = `Řádově můžem uznat! Přesně to je ${answer.toFixed(2)}`;
+                evl.textContent = `Řádově můžem uznat! Přesně to je ${answerFixed}`;
             } else {
-                evl.textContent = `Neni to tak, správně to je ${answer.toFixed(2)}`;
+                evl.textContent = `Neni to tak, správně to je ${answerFixed}`;
             }
             qd.appendChild(evl);
 
