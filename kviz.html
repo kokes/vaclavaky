@@ -159,13 +159,18 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         butts.appendChild(val);
         butts.appendChild(dunno);
         qd.appendChild(butts);
+
+        document.getElementById('guess').focus();
+        document.getElementById('guess').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                val.click();
+            }
+        })
     }
 
 
     // initMeasures();
     renderQuestion();
-    document.getElementById('guess').focus();
-
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
