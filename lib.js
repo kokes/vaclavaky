@@ -380,6 +380,13 @@ const convTgObj = [
             'Čas': [ (1/5) / 60, null, ['https://en.wikipedia.org/wiki/Horse_length'] ],
         },
     },
+    {
+        label: 'let provozu České televize',
+        conversions: {
+            'Čas': [ 60 * 24 * 365, null, ['https://img.ceskatelevize.cz/boss/document/1594.pdf'] ],
+            'Cena': [ 6.760 * Math.pow(10, 9), null, ['https://img.ceskatelevize.cz/boss/document/1594.pdf'] ],
+        },
+    },
 ]
 
 // functions
