@@ -117,7 +117,7 @@ const convTgObj = [
     {
         label: 'cheeseburgerů',
         conversions: {
-            'Cena': [ 29 ],
+            'Cena': [ 33, null, ['https://www.mcdonalds.cz/menu/hovezi-burgery/cheeseburger/'] ],
         },
     },
     {
