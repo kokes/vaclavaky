@@ -279,10 +279,6 @@ const convTgObj = [
         conversions: { 'Vzdálenost': [ 6371000 ], },
     },
     {
-        label: 'krát okolo Země (na rovníku)',
-        conversions: { 'Vzdálenost': [ 40075000 ], },
-    },
-    {
         label: 'krát ze Země na Měsíc',
         conversions: { 'Vzdálenost': [ 384400000 ], },
     },
@@ -291,13 +287,23 @@ const convTgObj = [
         conversions: { 'Vzdálenost': [ 149597870700 ], },
     },
     {
-        label: "planet Země",
+        label: 'planet Země',
         conversions: {
             'Osob': [ 7713468000, null, ['https://population.un.org/wpp/Publications/Files/WPP2019-Wallchart.pdf' ]],
             'Rozloha': [ 510072000 * 1000 * 1000, null, ['https://en.wikipedia.org/wiki/Earth']],
             'Objem': [ 1.08321 * Math.pow(10, 12) * 1000 * 1000 * 1000, null, ['https://en.wikipedia.org/wiki/Earth']],
             'Váha': [ 5.97237 * Math.pow(10, 24), null, ['https://en.wikipedia.org/wiki/Earth']],
-            'Čas': [ 4.54 * Math.pow(10, 9) * (60 * 24 * 365), null, ['https://en.wikipedia.org/wiki/Age_of_the_Earth']],
+            'Čas': [ 4.54 * Math.pow(10, 9) * (60 * 24 * 365), 'stáří', ['https://en.wikipedia.org/wiki/Age_of_the_Earth']],
+            'Vzdálenost': [ 40075000, 'po rovníku' ],
+        }
+    },
+    {
+        label: 'tisícikorunových bankovek',
+        conversions: {
+            'Rozloha': [ (158 * 74) / (1000 * 1000), null, ['https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf']],
+            'Váha': [ 1/1000, null, ['https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf']],
+            'Vzdálenost': [ 158 / 1000, 'na délku', ['https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf'] ],
+            'Cena': [ 1000 ],
         }
     },
     {
