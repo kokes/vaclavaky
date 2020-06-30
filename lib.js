@@ -62,337 +62,765 @@ let units = {
 
 const convTgObj = [
     {
-        label: 'vozů Škoda Fabia',
-        conversions: {
-            'Vzdálenost': [ 3.992 ],
+        'label': 'vozů Škoda Fabia',
+        'conversions': {
             // 'Objem': [ 315 / 1000, 'plných kufrů Škody Fabia'], // TODO: tohle jsou kufry, ne cely auta, takze to je nefer
-            'Cena': [ 269900, null, ['https://www.skoda-auto.cz/modely/fabia/fabia']],
-            'Váha': [ 1150 ],
-            'Rozloha': [ 4262 * 1732 / (1000 * 1000), 'půdorys auta' ],
-        },
+            'Vzdálenost': {
+                'units': 3.992,
+            },
+            'Cena': {
+                'units': 269900,
+                'sources': [
+                    'https://www.skoda-auto.cz/modely/fabia/fabia',
+                ]
+            },
+            'Váha': {
+                'units': 1150,
+            },
+            'Rozloha': {
+                'units': 7.381784,
+                'desc': 'půdorys auta',
+            }
+        }
     },
     {
-        label: 'koleček paprikáše',
-        conversions: {
-            'Váha': [ 2.7 / 1000 ],
-            'Rozloha': [ 5.5 * 5.5 / (100 * 100), 'vyskádaných do mřížky'],
-            'Cena': [ 229 / 370.37037037 ],
-            'Vzdálenost': [ 0.2 / 100 , 'na tloušťku'],
-        },
+        'label': 'koleček paprikáše',
+        'conversions': {
+            'Váha': {
+                'units': 0.0027,
+            },
+            'Rozloha': {
+                'units': 0.003025,
+                'desc': 'vyskádaných do mřížky',
+            },
+            'Cena': {
+                'units': 0.6183000000006184,
+            },
+            'Vzdálenost': {
+                'units': 0.002,
+                'desc': 'na tloušťku',
+            }
+        }
     },
     {
-        label: 'víček',
-        conversions: {
-            'Váha': [ 1/500 ],
-            'Cena': [ 7 * 1/500 ],
-        },
+        'label': 'víček',
+        'conversions': {
+            'Váha': {
+                'units': 0.002,
+            },
+            'Cena': {
+                'units': 0.014,
+            }
+        }
     },
     {
-        label: 'disket',
-        conversions: {
-            'Rozloha': [ 8.9 * 9.3 / (100 * 100) ],
-            'Data': [ 1440 * 1000 ],
-        },
+        'label': 'disket',
+        'conversions': {
+            'Rozloha': {
+                'units': 0.008277000000000001,
+            },
+            'Data': {
+                'units': 1440000,
+            }
+        }
     },
     {
-        label: 'Václaváků',
-        conversions: {
-            'Rozloha': [ 42255 ], // wiki říká 682 * 60
-        },
+        'label': 'Václaváků',
+        'conversions': {
+            'Rozloha': {
+                'units': 42255, // wiki říká 682 * 60
+            }
+        }
     },
     {
-        label: 'Českých republik',
-        conversions: {
-            'Osob': [ 10578820 ],
-            'Rozloha': [ 78866 * 1000 * 1000 ],
-        },
+        'label': 'Českých republik',
+        'conversions': {
+            'Osob': {
+                'units': 10578820,
+            },
+            'Rozloha': {
+                'units': 78866000000,
+            }
+        }
     },
     {
-        label: 'Prah',
-        conversions: {
+        'label': 'Prah',
+        'conversions': {
             // TODO: pocet osob
-            'Rozloha': [ 496 * 1000 * 1000 ],
-        },
-    },
-    {
-        label: 'cheeseburgerů',
-        conversions: {
-            'Cena': [ 33, null, ['https://www.mcdonalds.cz/menu/hovezi-burgery/cheeseburger/'] ],
-        },
-    },
-    {
-        label: 'Airbusů A380-800',
-        conversions: {
-            'Osob': [ 868 ],
-            'Váha': [ 276800 ],
-            'Vzdálenost': [ 73 ],
-        },
-    },
-    {
-        label: 'stadionů Wembley',
-        conversions: {
-            'Osob': [ 90000 ],
-            'Rozloha': [ 105*68 ],
-            'Cena': [ 23.927 * 1000 * 1000 * 1000 ],
+            'Rozloha': {
+                'units': 496000000,
+            }
         }
     },
     {
-        label: 'O2 Arén',
-        conversions: {
-            'Osob': [ 17360 ],
-            'Rozloha': [ 105*68 ],
-            'Cena': [ 8 * 1000 * 1000 * 1000 ],
+        'label': 'cheeseburgerů',
+        'conversions': {
+            'Cena': {
+                'units': 33,
+                'sources': [
+                    'https://www.mcdonalds.cz/menu/hovezi-burgery/cheeseburger/',
+                ]
+            }
         }
     },
     {
-        label: 'stadionů Strahov',
-        conversions: {
-            'Rozloha': [ 310.5 * 202.5 ],
-            'Osob': [ 250000 ],
-
-        },
+        'label': 'Airbusů A380-800',
+        'conversions': {
+            'Osob': {
+                'units': 868,
+            },
+            'Váha': {
+                'units': 276800,
+            },
+            'Vzdálenost': {
+                'units': 73,
+            }
+        }
     },
     {
-        label: 'hamburgerů (Big Mac)',
-        conversions: {
-            'Váha': [ 240 / 1000, null, ['https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac']],
+        'label': 'stadionů Wembley',
+        'conversions': {
+            'Osob': {
+                'units': 90000,
+            },
+            'Rozloha': {
+                'units': 7140,
+            },
+            'Cena': {
+                'units': 23927000000,
+            }
+        }
+    },
+    {
+        'label': 'O2 Arén',
+        'conversions': {
+            'Osob': {
+                'units': 17360,
+            },
+            'Rozloha': {
+                'units': 7140,
+            },
+            'Cena': {
+                'units': 8000000000,
+            }
+        }
+    },
+    {
+        'label': 'stadionů Strahov',
+        'conversions': {
+            'Rozloha': {
+                'units': 62876.25,
+            },
+            'Osob': {
+                'units': 250000,
+            }
+        }
+    },
+    {
+        'label': 'hamburgerů (Big Mac)',
+        'conversions': {
             // 'Cena': [ null, 'hamburgerů (Big Mac)' ] // TODO
-        },
+            'Váha': {
+                'units': 0.24,
+                'sources': [
+                    'https://weightofstuff.com/whats-the-weight-of-mcdonalds-burgers/#Big_Mac',
+                ]
+            }
+        }
     },
     {
-        label: 'bytů v Praze (2+kk)',
-        conversions: {
-            'Rozloha': [ 50 ],
-            'Cena': [ 5*1000*1000 ],
-        },
+        'label': 'bytů v Praze (2+kk)',
+        'conversions': {
+            'Rozloha': {
+                'units': 50,
+            },
+            'Cena': {
+                'units': 5000000,
+            }
+        }
     },
     {
-        label: 'plejtváků obrovských',
-        // oboji prumer dospelych v severnim pacifiku, samci a samice se trochu lisi
-        conversions: {
-            'Vzdálenost': [ 24.5 ],
-            'Váha': [ 106 * 1000 ],
-        },
+        'label': 'plejtváků obrovských',
+        'conversions': {
+            // oboji prumer dospelych v severnim pacifiku, samci a samice se trochu lisi
+            'Vzdálenost': {
+                'units': 24.5,
+            },
+            'Váha': {
+                'units': 106000,
+            }
+        }
     },
     {
-        label: 'balónků plných hélia (pro vzlet)',
-        conversions: {
+        'label': 'balónků plných hélia (pro vzlet)',
+        'conversions': {
             // balonek ma 30 cm v prumeru, cca, tak vemem 4/3 * pi * r^3
-            'Objem': [ (4/3) * Math.PI * (0.15**3), null, ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
-            'Váha': [ ((4/3) * Math.PI * (15**3) / 1000) / 1000, null, ['https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm']],
-        },
-    },
-    {
-        label: 'vajíček na hniličku', conversions: { 'Čas': [ 4.5 ], },
-    },
-    {
-        label: 'pracovních dob', conversions: { 'Čas': [ 60 * 8 ], },
-    },
-    {
-        label: 'pořadů Nory Fridrichové', conversions: { 'Čas': [ 60 * 168 ], },
-    },
-    {
-        label: 'těhotenství', conversions: { 'Čas': [ 60 * 24 * 7 * 40 ], },
-    },
-    {
-        label: 'stáří vesmírů', conversions: { 'Čas': [ 60 * 24 * 365 * 13.772 * 1000 * 1000 * 1000 ], },
-    },
-    {
-        label: 'kilometrů chůze', conversions: { 'Čas': [ 60 / 5 ], 'Vzdálenost': [ 1000 ] },
-    },
-    // TODO: vycistit nasledujici
-    {
-        label: 'fotbalových hřišť v Edenu',
-        conversions: { 'Rozloha': [ 7140 ], },
-    },
-    {
-        label: 'nádrží Slapy',
-        conversions: { 'Rozloha': [ 11626000 ], 'Vzdálenost': [ 43000 ], 'Objem': [ 269.3 * 1000 * 1000 ] },
-    },
-    {
-        label: 'rozloh Texasu',
-        conversions: { 'Rozloha': [ 696241000000 ], },
-    },
-    {
-        label: 'postelí (šířka 160 cm)',
-        conversions: { 'Rozloha': [ 3.2 ], },
-    },
-    {
-        label: 'obědů',
-        conversions: { 'Cena': [ 150 ], },
-    },
-    {
-        label: 'průměrných mezd',
-        conversions: { 'Cena': [ 29346 ], },
-    },
-    {
-        label: 'průměrných mezd v Praze',
-        conversions: { 'Cena': [ 37046 ], },
-    },
-    {
-        label: 'okresních nemocnic',
-        conversions: { 'Cena': [ 1500000000, null, ['https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717'] ], },
-    },
-    {
-        label: 'kilometrů dálnic',
-        conversions: { 'Cena': [ 152000000, null, ['https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/'] ], },
-    },
-    {
-        label: 'majetků Andreje Babiše',
-        conversions: { 'Cena': [ 88000000000 ], },
-    },
-    {
-        label: 'let elektřiny pro ČR',
-        // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
-        conversions: { 'Cena': [ 245619500000, null, ['https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/'] ], },
-    },
-    {
-        label: 'ročních rozpočtů Česka',
-        conversions: { 'Cena': [ 1309300000000 ], },
-    },
-    {
-        label: 'dětských plínek',
-        conversions: { 'Cena': [ 5 ], },
-    },
-    {
-        label: 'lahvových piv',
-        conversions: { 'Cena': [ 11.34, null, ['https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779'] ], },
-    },
-    {
-        label: 'krabiček cigaret',
-        conversions: { 'Cena': [ 100 ], },
-    },
-    {
-        label: 'Klapzubových jedenáctek',
-        conversions: { 'Osob': [ 11 ], },
-    },
-    {
-        label: 'vagónů dlouhý vlak',
-        conversions: { 'Vzdálenost': [ 24.5 ], },
-    },
-    {
-        label: 'krát z Prahy do Brna',
-        conversions: { 'Vzdálenost': [ 205000 ], },
-    },
-    {
-        label: 'poloměrů Země',
-        conversions: { 'Vzdálenost': [ 6371000 ], },
-    },
-    {
-        label: 'krát ze Země na Měsíc',
-        conversions: { 'Vzdálenost': [ 384400000 ], },
-    },
-    {
-        label: 'krát ze Země na Slunce (AU)',
-        conversions: { 'Vzdálenost': [ 149597870700 ], },
-    },
-    {
-        label: 'planet Země',
-        conversions: {
-            'Osob': [ 7713468000, null, ['https://population.un.org/wpp/Publications/Files/WPP2019-Wallchart.pdf' ]],
-            'Rozloha': [ 510072000 * 1000 * 1000, null, ['https://en.wikipedia.org/wiki/Earth']],
-            'Objem': [ 1.08321 * Math.pow(10, 12) * 1000 * 1000 * 1000, null, ['https://en.wikipedia.org/wiki/Earth']],
-            'Váha': [ 5.97237 * Math.pow(10, 24), null, ['https://en.wikipedia.org/wiki/Earth']],
-            'Čas': [ 4.54 * Math.pow(10, 9) * (60 * 24 * 365), 'stáří', ['https://en.wikipedia.org/wiki/Age_of_the_Earth']],
-            'Vzdálenost': [ 40075000, 'po rovníku' ],
+            'Objem': {
+                'units': 0.014137166941154066,
+                'sources': [
+                    'https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm',
+                ]
+            },
+            'Váha': {
+                'units': 0.014137166941154067,
+                'sources': [
+                    'https://science.howstuffworks.com/science-vs-myth/everyday-myths/question185.htm',
+                ]
+            }
         }
     },
     {
-        label: 'tisícikorunových bankovek',
-        conversions: {
-            'Rozloha': [ (158 * 74) / (1000 * 1000), null, ['https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf']],
-            'Váha': [ 1/1000, null, ['https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf']],
-            'Vzdálenost': [ 158 / 1000, 'na délku', ['https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf'] ],
-            'Cena': [ 1000 ],
+        'label': 'vajíček na hniličku',
+        'conversions': {
+            'Čas': {
+                'units': 4.5,
+            }
         }
     },
     {
-        label: 'půllitrů piva',
-        conversions: { 'Objem': [ 0.0005 ], },
+        'label': 'pracovních dob',
+        'conversions': {
+            'Čas': {
+                'units': 480,
+            }
+        }
     },
     {
-        label: 'lidských vlasů',
-        conversions: { 'Vzdálenost': [ 75 * Math.pow(10, -6), 'na tloušťku', ['https://en.wikipedia.org/wiki/Hair%27s_breadth'] ], },
+        'label': 'pořadů Nory Fridrichové',
+        'conversions': {
+            'Čas': {
+                'units': 10080,
+            }
+        }
     },
     {
-        label: 'olympijských bazénů',
-        conversions: { 'Objem': [ 2500 ], },
+        'label': 'těhotenství',
+        'conversions': {
+            'Čas': {
+                'units': 403200,
+            }
+        }
     },
     {
-        label: 'ročních spotřeb piva v ČR',
-        conversions: { 'Objem': [ 1650000, null, ['https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj'] ], },
+        'label': 'stáří vesmírů',
+        'conversions': {
+            'Čas': {
+                'units': 7238563200000000,
+            }
+        }
     },
     {
-        label: 'praček',
-        conversions: {
-            'Váha': [ 80 ],
-            'Objem': [ 0.306, null, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
-            'Rozloha': [ 0.6*0.6, null, ['https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/', 'https://twitter.com/41actionnews/status/1158871610876682240']],
-    },
-    },
-    {
-        label: 'traktorů pro mladé a začínající zemědělce',
-        conversions: {
-            'Váha': [ 1710, null, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ], 
-            'Cena': [ 511615, null, ['https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
-            'Vzdálenost': [ 3.59, 'na délku', ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
-            'Rozloha': [ 3.59 * 1.62, null, ['https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah', 'https://twitter.com/HerbertPavera/status/1215366274240389120'] ],
-        },
+        'label': 'kilometrů chůze',
+        'conversions': {
+            'Čas': {
+                'units': 12,
+            },
+            'Vzdálenost': {
+                'units': 1000,
+            }
+        }
     },
     {
-        label: 'CD',
-        conversions: { 'Data': [ 700000000 ], },
+        'label': 'fotbalových hřišť v Edenu',
+        'conversions': {
+            'Rozloha': {
+                'units': 7140,
+            }
+        }
     },
     {
-        label: 'DVD',
-        conversions: { 'Data': [ 4700000000 ], },
+        'label': 'nádrží Slapy',
+        'conversions': {
+            'Rozloha': {
+                'units': 11626000,
+            },
+            'Vzdálenost': {
+                'units': 43000,
+            },
+            'Objem': {
+                'units': 269300000,
+            }
+        }
     },
     {
-        label: 'pevných disků (16 TB)',
-        conversions: {
-            'Data': [ 16 * 1024 * 1024 * 1024 * 1024, null, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Cena': [ 13890, null, ['https://www.alza.cz/seagate-ironwolf-16tb-d5665111.htm?o=1']],
-            'Váha': [ 0.670, null, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Rozloha': [ (101.85 * 146.99) / (1000 * 1000), 'půdorys disku', ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Vzdálenost': [ 2.611 / 100, 'naskládaných na sebe', ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-            'Objem': [ (26.11 * 101.85 * 146.99) / (1000 * 1000 * 1000), null, ['https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf']],
-        },
+        'label': 'rozloh Texasu',
+        'conversions': {
+            'Rozloha': {
+                'units': 696241000000,
+            }
+        }
     },
     {
-        label: 'informačních systémů pro evidenci vozidel',
-        conversions: { 'Cena': [ 484379403, null, ['https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok', 'https://smlouvy.gov.cz/smlouva/11357620'] ], },
+        'label': 'postelí (šířka 160 cm)',
+        'conversions': {
+            'Rozloha': {
+                'units': 3.2,
+            }
+        }
     },
     {
-        label: 'rozpětí křídel orlů skalních',
-        conversions: { 'Vzdálenost': [ 2.025, null, ['https://twitter.com/_Karoliinka_/status/1242900637660176387', 'https://www.allaboutbirds.org/guide/Golden_Eagle/id'] ], },
+        'label': 'obědů',
+        'conversions': {
+            'Cena': {
+                'units': 150,
+            }
+        }
     },
     {
-        label: 'rolí toaletního papíru',
-        conversions: {
-            'Vzdálenost': [ 19.26875, null, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
-            'Cena': [ 12.4375, null, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
-            'Rozloha': [ 19.26875*(9.5/100), null, ['https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks'] ],
-
-        },
+        'label': 'průměrných mezd',
+        'conversions': {
+            'Cena': {
+                'units': 29346,
+            }
+        }
     },
     {
-        label: 'tapírů nadél',
-        conversions: { 'Vzdálenost': [ 2, null, ['https://www.facebook.com/bionag/photos/a.1517805361845838/2326913190935047/?type=3&theater', 'https://cs.wikipedia.org/wiki/Tap%C3%ADrovit%C3%AD'] ], },
+        'label': 'průměrných mezd v Praze',
+        'conversions': {
+            'Cena': {
+                'units': 37046,
+            }
+        }
     },
     {
-        label: 'koňských délek',
-        conversions: {
-            'Vzdálenost': [ 2.4, null, ['https://en.wikipedia.org/wiki/Horse_length'] ],
-            'Čas': [ (1/5) / 60, null, ['https://en.wikipedia.org/wiki/Horse_length'] ],
-        },
+        'label': 'okresních nemocnic',
+        'conversions': {
+            'Cena': {
+                'units': 1500000000,
+                'sources': [
+                    'https://zdravi.euro.cz/denni-zpravy/z-domova/nova-nemocnice-je-drazsi-nez-se-cekalo-musi-se-skrtat-452717',
+                ]
+            }
+        }
     },
     {
-        label: 'let provozu České televize',
-        conversions: {
-            'Čas': [ 60 * 24 * 365, null, ['https://img.ceskatelevize.cz/boss/document/1594.pdf'] ],
-            'Cena': [ 6.760 * Math.pow(10, 9), null, ['https://img.ceskatelevize.cz/boss/document/1594.pdf'] ],
-        },
+        'label': 'kilometrů dálnic',
+        'conversions': {
+            'Cena': {
+                'units': 152000000,
+                'sources': [
+                    'https://eurozpravy.cz/domaci/politika/214234-kolik-u-nas-stoji-kilometr-dalnice-jsme-na-tom-lepe-nez-pred-peti-lety-ujistil-prezident-nku/',
+                ]
+            }
+        }
     },
+    {
+        'label': 'majetků Andreje Babiše',
+        'conversions': {
+            'Cena': {
+                'units': 88000000000,
+            }
+        }
+    },
+    {
+        'label': 'let elektřiny pro ČR',
+        'conversions': {
+            // cena 3,50 Kč/KWh; spotřeba 70177 GWh/rok
+            'Cena': {
+                'units': 245619500000,
+                'sources': [
+                    'https://www.cenyenergie.cz/spotreba-elektriny-vody-plynu-a-tepla-v-ceske-republice/',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'ročních rozpočtů Česka',
+        'conversions': {
+            'Cena': {
+                'units': 1309300000000,
+            }
+        }
+    },
+    {
+        'label': 'dětských plínek',
+        'conversions': {
+            'Cena': {
+                'units': 5,
+            }
+        }
+    },
+    {
+        'label': 'lahvových piv',
+        'conversions': {
+            'Cena': {
+                'units': 11.34,
+                'sources': [
+                    'https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=statistiky&katalog=31779',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'krabiček cigaret',
+        'conversions': {
+            'Cena': {
+                'units': 100,
+            }
+        }
+    },
+    {
+        'label': 'Klapzubových jedenáctek',
+        'conversions': {
+            'Osob': {
+                'units': 11,
+            }
+        }
+    },
+    {
+        'label': 'vagónů dlouhý vlak',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 24.5,
+            }
+        }
+    },
+    {
+        'label': 'krát z Prahy do Brna',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 205000,
+            }
+        }
+    },
+    {
+        'label': 'poloměrů Země',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 6371000,
+            }
+        }
+    },
+    {
+        'label': 'krát ze Země na Měsíc',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 384400000,
+            }
+        }
+    },
+    {
+        'label': 'krát ze Země na Slunce (AU)',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 149597870700,
+            }
+        }
+    },
+    {
+        'label': 'planet Země',
+        'conversions': {
+            'Osob': {
+                'units': 7713468000,
+                'sources': [
+                    'https://population.un.org/wpp/Publications/Files/WPP2019-Wallchart.pdf',
+                ]
+            },
+            'Rozloha': {
+                'units': 510072000000000,
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Earth',
+                ]
+            },
+            'Objem': {
+                'units': 1.08321e+21,
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Earth',
+                ]
+            },
+            'Váha': {
+                'units': 5.97237e+24,
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Earth',
+                ]
+            },
+            'Čas': {
+                'units': 2386224000000000,
+                'desc': 'stáří',
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Age_of_the_Earth',
+                ]
+            },
+            'Vzdálenost': {
+                'units': 40075000,
+                'desc': 'po rovníku',
+            }
+        }
+    },
+    {
+        'label': 'tisícikorunových bankovek',
+        'conversions': {
+            'Rozloha': {
+                'units': 0.011692,
+                'sources': [
+                    'https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf',
+                ]
+            },
+            'Váha': {
+                'units': 0.001,
+                'sources': [
+                    'https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf',
+                ]
+            },
+            'Vzdálenost': {
+                'units': 0.158,
+                'desc': 'na délku',
+                'sources': [
+                    'https://www.cnb.cz/export/sites/cnb/cs/verejnost/.galleries/pro_media/konference_projevy/vystoupeni_projevy/download/rezabek_20080321_bankovka_1000Kc.pdf',
+                ]
+            },
+            'Cena': {
+                'units': 1000,
+            }
+        }
+    },
+    {
+        'label': 'půllitrů piva',
+        'conversions': {
+            'Objem': {
+                'units': 0.0005,
+            }
+        }
+    },
+    {
+        'label': 'lidských vlasů',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 0.000075,
+                'desc': 'na tloušťku',
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Hair%27s_breadth',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'olympijských bazénů',
+        'conversions': {
+            'Objem': {
+                'units': 2500,
+            }
+        }
+    },
+    {
+        'label': 'ročních spotřeb piva v ČR',
+        'conversions': {
+            'Objem': {
+                'units': 1650000,
+                'sources': [
+                    'https://www.irozhlas.cz/ekonomika/pivo-narust-spotreba-produkce-konzumace-alkoholu-cesky-svaz-pivovaru-a-sladoven_1904091237_anj',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'praček',
+        'conversions': {
+            'Váha': {
+                'units': 80,
+            },
+            'Objem': {
+                'units': 0.306,
+                'sources': [
+                    'https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/',
+                    'https://twitter.com/41actionnews/status/1158871610876682240',
+                ]
+            },
+            'Rozloha': {
+                'units': 0.36,
+                'sources': [
+                    'https://lifestyle.euronics.co.uk/buyers-guide/washing-machine/size/',
+                    'https://twitter.com/41actionnews/status/1158871610876682240',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'traktorů pro mladé a začínající zemědělce',
+        'conversions': {
+            'Váha': {
+                'units': 1710,
+                'sources': [
+                    'https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah',
+                    'https://twitter.com/HerbertPavera/status/1215366274240389120',
+                ]
+            },
+            'Cena': {
+                'units': 511615,
+                'sources': [
+                    'https://ehlzetor.cz/soubory/novinky_soubory/file-22-6.pdf',
+                    'https://twitter.com/HerbertPavera/status/1215366274240389120',
+                ]
+            },
+            'Vzdálenost': {
+                'units': 3.59,
+                'desc': 'na délku',
+                'sources': [
+                    'https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah',
+                    'https://twitter.com/HerbertPavera/status/1215366274240389120',
+                ]
+            },
+            'Rozloha': {
+                'units': 5.8158,
+                'sources': [
+                    'https://www.zetor.cz/zetor-utilix-technicke-parametry#obsah',
+                    'https://twitter.com/HerbertPavera/status/1215366274240389120',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'CD',
+        'conversions': {
+            'Data': {
+                'units': 700000000,
+            }
+        }
+    },
+    {
+        'label': 'DVD',
+        'conversions': {
+            'Data': {
+                'units': 4700000000,
+            }
+        }
+    },
+    {
+        'label': 'pevných disků (16 TB)',
+        'conversions': {
+            'Data': {
+                'units': 17592186044416,
+                'sources': [
+                    'https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf',
+                ]
+            },
+            'Cena': {
+                'units': 13890,
+                'sources': [
+                    'https://www.alza.cz/seagate-ironwolf-16tb-d5665111.htm?o=1',
+                ]
+            },
+            'Váha': {
+                'units': 0.67,
+                'sources': [
+                    'https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf',
+                ]
+            },
+            'Rozloha': {
+                'units': 0.014970931500000001,
+                'desc': 'půdorys disku',
+                'sources': [
+                    'https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf',
+                ]
+            },
+            'Vzdálenost': {
+                'units': 0.02611,
+                'desc': 'naskládaných na sebe',
+                'sources': [
+                    'https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf',
+                ]
+            },
+            'Objem': {
+                'units': 0.000390891021465,
+                'sources': [
+                    'https://www.seagate.com/www-content/datasheets/pdfs/ironwolf-16tb-DS1904-13-1905US-en_US.pdf',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'informačních systémů pro evidenci vozidel',
+        'conversions': {
+            'Cena': {
+                'units': 484379403,
+                'sources': [
+                    'https://www.irozhlas.cz/zpravy-domov/ministerstvo-dopravy-statni-fond-dopravni-infrastruktury-e-shop-dalnicni-znamky_2001161742_dok',
+                    'https://smlouvy.gov.cz/smlouva/11357620',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'rozpětí křídel orlů skalních',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 2.025,
+                'sources': [
+                    'https://twitter.com/_Karoliinka_/status/1242900637660176387',
+                    'https://www.allaboutbirds.org/guide/Golden_Eagle/id',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'rolí toaletního papíru',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 19.26875,
+                'sources': [
+                    'https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks',
+                ]
+            },
+            'Cena': {
+                'units': 12.4375,
+                'sources': [
+                    'https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks',
+                ]
+            },
+            'Rozloha': {
+                'units': 1.8305312500000002,
+                'sources': [
+                    'https://www.rohlik.cz/1307939-zewa-camomile-comfort-toaletni-papir-3-vrstvy-16ks',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'tapírů nadél',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 2,
+                'sources': [
+                    'https://www.facebook.com/bionag/photos/a.1517805361845838/2326913190935047/?type=3&theater',
+                    'https://cs.wikipedia.org/wiki/Tap%C3%ADrovit%C3%AD',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'koňských délek',
+        'conversions': {
+            'Vzdálenost': {
+                'units': 2.4,
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Horse_length',
+                ]
+            },
+            'Čas': {
+                'units': 0.0033333333333333335,
+                'sources': [
+                    'https://en.wikipedia.org/wiki/Horse_length',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'let provozu České televize',
+        'conversions': {
+            'Čas': {
+                'units': 525600,
+                'sources': [
+                    'https://img.ceskatelevize.cz/boss/document/1594.pdf',
+                ]
+            },
+            'Cena': {
+                'units': 6760000000,
+                'sources': [
+                    'https://img.ceskatelevize.cz/boss/document/1594.pdf',
+                ]
+            }
+        }
+    }
 ]
 
 // functions
@@ -467,27 +895,27 @@ function numToText(number, mul, unit, gr) {
         if (!el) {
             continue;
         }
-        let nval = natVal(num / el[0]);
+        let nval = natVal(num / el.units);
         let conversions = {};
         for (let [tp, mp] of Object.entries(conv.conversions)) {
             if (tp === gr) continue;
 
             conversions[tp] = {
-                val: num / el[0] * mp[0],
-                natval: natVal(num / el[0] * mp[0]),
+                val: num / el.units * mp.units,
+                natval: natVal(num / el.units * mp.units),
                 unitLabel: units[tp][1],
                 unitNorm: units[tp][0],
                 description: mp[1],
             }
         }
         res.push({
-            origVal: num / el[0],
+            origVal: num / el.units,
             value: nval,
             unit: conv.label,
-            sources: el[2],
+            sources: el.sources,
             conversions: conversions,
-            normalisation: el[0] + ' ' + units[gr][1],
-            description: el[1],
+            normalisation: el.units + ' ' + units[gr][1],
+            description: el.desc,
         });
     }
     res.sort((a, b) => b.origVal - a.origVal);
