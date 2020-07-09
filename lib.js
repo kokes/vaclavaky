@@ -575,6 +575,33 @@ const convTgObj = [
         }
     },
     {
+        'label': 'padesátikorun',
+        'conversions': {
+            'Rozloha': {
+                'units': (Math.pow(27.5/2, 2) * Math.PI) / (1000*1000),
+                'sources': [
+                    'https://www.cnb.cz/cs/bankovky-a-mince/mince/50-kc/',
+                ]
+            },
+            'Váha': {
+                'units': 9.7/1000,
+                'sources': [
+                    'https://www.cnb.cz/cs/bankovky-a-mince/mince/50-kc/',
+                ]
+            },
+            'Vzdálenost': {
+                'units': 0.0275,
+                'desc': 'vyskládané vedle sebe',
+                'sources': [
+                    'https://www.cnb.cz/cs/bankovky-a-mince/mince/50-kc/',
+                ]
+            },
+            'Cena': {
+                'units': 50,
+            }
+        }
+    },
+    {
         'label': 'půllitrů piva',
         'conversions': {
             'Objem': {
