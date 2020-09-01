@@ -367,18 +367,36 @@ const convTgObj = [
         }
     },
     {
-        'label': 'průměrných mezd',
+        'label': 'průměrných hrubých mezd',
         'conversions': {
             'Cena': {
-                'units': 29346,
+                'units': 34077,
+                'sources': [
+                    'https://www.czso.cz/csu/czso/cri/prumerne-mzdy-1-ctvrtleti-2020',
+                ]
             }
         }
     },
     {
-        'label': 'průměrných mezd v Praze',
+        'label': 'průměrných hrubých mezd v Praze',
         'conversions': {
             'Cena': {
-                'units': 37046,
+                'units': 42760,
+                'sources': [
+                    'https://www.czso.cz/csu/czso/cri/prumerne-mzdy-1-ctvrtleti-2020',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'průměrných starobních důchodů',
+        'conversions': {
+            'Cena': {
+                'units': 14400,
+                'sources': [
+                    'https://ct24.ceskatelevize.cz/ekonomika/3094577-prumerny-duchod-ma-pristi-rok-vzrust-o-zhruba-800-korun-vlada-mozna-tentokrat-nic',
+                    'https://www.mpsv.cz/documents/20142/511219/30_12_2019+TZ_Co+se+meni+v+roce+2020.pdf/098c9a52-daab-742b-a7c1-3ae5c9b61a34',
+                ]
             }
         }
     },
