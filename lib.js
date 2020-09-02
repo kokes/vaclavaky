@@ -401,6 +401,26 @@ const convTgObj = [
         }
     },
     {
+        'label': 'jednorázových příspěvků důchodcům (tzv. rouškovné)',
+        'conversions': {
+            'Cena': {
+                'units': 14500000000,
+                'sources': [
+                    'https://apps.odok.cz/veklep-detail?pid=ALBSBSUGDF2F',
+                    'https://www.irozhlas.cz/zpravy-domov/jana-malacova-rouskovne-vyroky-prispevek-pro-duchodce-seniori_2009020827_dok',
+                ]
+            },
+            'Osob': {
+                // tohle je hrubej odhad - bude se to počítat podle toho, kdo bude k listopadu 2020 pobírat důchod
+                'units': 2900000,
+                'sources': [
+                    'https://apps.odok.cz/veklep-detail?pid=ALBSBSUGDF2F',
+                    'https://www.irozhlas.cz/zpravy-domov/jana-malacova-rouskovne-vyroky-prispevek-pro-duchodce-seniori_2009020827_dok',
+                ]
+            }
+        }
+    },
+    {
         'label': 'okresních nemocnic',
         'conversions': {
             'Cena': {
