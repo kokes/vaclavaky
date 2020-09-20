@@ -432,6 +432,23 @@ const convTgObj = [
         }
     },
     {
+        'label': 'závodů Tour de France', // 2020
+        'conversions': {
+            'Vzdálenost': {
+                'units': 3484.2 * 1000,
+                'sources': [
+                    'https://en.wikipedia.org/wiki/2020_Tour_de_France',
+                ],
+            },
+            'Čas': {
+                'units': 87 * 60 + 20 + 5/60, // Pogacaruv cas
+                'sources': [
+                    'https://en.wikipedia.org/wiki/2020_Tour_de_France',
+                ],
+            },
+        },
+    },
+    {
         'label': 'kilometrů dálnic',
         'conversions': {
             'Cena': {
