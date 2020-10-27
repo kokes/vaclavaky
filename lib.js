@@ -924,6 +924,20 @@ function numFormat(val) {
 }
 
 const natMap = {
+    603: 'centiliard',
+    600: 'centilionů',
+    303: 'kvinkvagintilliard',
+    180: 'trigintilionů',
+    120: 'vigintilionů',
+    63: 'deciliard',
+    60: 'decilionů',
+    57: 'noniliard',
+    54: 'nonilionů',
+    51: 'oktiliard',
+    48: 'oktilionů',
+    45: 'septiliard',
+    42: 'septilionů',
+    39: 'sextiliard',
     36: 'sextilionů',
     33: 'kvintiliard',
     30: 'kvintilionů',
