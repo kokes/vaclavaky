@@ -110,11 +110,11 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         shuffleArray(targets);
         qs.push(targets.pop());
          // chceme tu menší/lehčí/levnější věc jako první, ať ta otázka má smysl
-        qs.sort((a, b) => a.conversions[measure][0] - b.conversions[measure][0]);
+        qs.sort((a, b) => a.conversions[measure].units - b.conversions[measure].units);
 
         qd.innerHTML = `${measure}: <input id='guess'></input> <em>${qs[0].label}</em> se vejde do <em>${qs[1].label}</em>`;
 
-        const answer = qs[1].conversions[measure][0] / qs[0].conversions[measure][0];
+        const answer = qs[1].conversions[measure].units / qs[0].conversions[measure].units;
         console.log(`Pro podvodníčky tu máme odpověď: ${answer}`);
 
 
