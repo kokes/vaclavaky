@@ -252,6 +252,23 @@ const convTgObj = [
         }
     },
     {
+        'label': 'Bruntálů',
+        'conversions': {
+            'Rozloha': {
+                'units': 29.34 * 1000 * 1000,
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Brunt%C3%A1l',
+                ],
+            },
+            'Osob': {
+                'units': 16138,
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Brunt%C3%A1l',
+                ],
+            }
+        }
+    },
+    {
         'label': 'balónků plných hélia (pro vzlet)',
         'conversions': {
             // balonek ma 30 cm v prumeru, cca, tak vemem 4/3 * pi * r^3
