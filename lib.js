@@ -28,6 +28,8 @@ let unitConv = {
     'km': 1000,
 
     // normalize m^3
+    'ml': 0.001 / 1000,
+    'l': 0.001,
     'm3': 1,
     'hl': 0.1,
     'ft3': 1/35,
@@ -174,6 +176,27 @@ const convTgObj = [
             },
             'Vzdálenost': {
                 'units': 73,
+            }
+        }
+    },
+    {
+        'label': 'částic koronaviru',
+        'conversions': {
+            'Osob': {
+                'units': 1 / (800*1000*1000),
+                'sources': [
+                    'https://www.novinky.cz/koktejl/clanek/veskery-koronavirus-sars-cov-2-na-celem-svete-by-se-vesel-na-cajovou-lzicku-40342646',
+                    'https://aproblemsquared.libsyn.com/website/series-of-teeth-and-queries-of-cheese',
+                ]
+            },
+            'Objem': {
+                'units':
+                    4/3 * Math.PI * Math.pow(75 * Math.pow(10, -9), 3) // objem jedne castice
+                    * Math.pow(Math.PI / (3 * Math.sqrt(2)), -1), // sphere packing
+                'sources': [
+                    'https://www.novinky.cz/koktejl/clanek/veskery-koronavirus-sars-cov-2-na-celem-svete-by-se-vesel-na-cajovou-lzicku-40342646',
+                    'https://aproblemsquared.libsyn.com/website/series-of-teeth-and-queries-of-cheese',
+                ]
             }
         }
     },
