@@ -37,10 +37,13 @@ let unitConv = {
     // normalize b
     'b': 1,
     'kb': 1000,
-    'mb': 1000 * 1000,
-    'gb': 1000 * 1000 * 1000,
-    'tb': 1000 * 1000 * 1000 * 1000,
-    'pb': 1000 * 1000 * 1000 * 1000 * 1000,
+    'mb': Math.pow(1000, 2),
+    'gb': Math.pow(1000, 3),
+    'tb': Math.pow(1000, 4),
+    'pb': Math.pow(1000, 5),
+    'eb': Math.pow(1000, 6),
+    'zb': Math.pow(1000, 7),
+    'yb': Math.pow(1000, 8),
 
     // normalize: minutes
     's': 1/60,

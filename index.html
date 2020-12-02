@@ -130,6 +130,9 @@
                 <option value='gb'>GB</option>
                 <option value='tb'>TB</option>
                 <option value='pb'>PB</option>
+                <option value='eb'>EB</option>
+                <option value='zb'>ZB</option>
+                <option value='yb'>YB</option>
             </optgroup>
             <optgroup label='Čas'>
                 <option value='s'>sekund</option>
@@ -294,12 +297,34 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                 for (let [unit, map] of Object.entries(el.conversions)) {
                     const ll = document.createElement('li');
                     const a = document.createElement('a');
-                    const {baseVal, pow} = maxPow(map.val)
-                    const newHash = `#num=${baseVal}&mul=${pow}&unit=${map.unitNorm}`;
+
+                    // convert "10 000 kg" into "10 tons"
+                    const options = document.querySelectorAll(`select#unit optgroup[label=${unit}] option`);
+                    const measures = Array.from(options, x=>({[x.value]: x.label})).reduce((a, b)=>Object.assign({}, a, b));
+
+                    // copy the existing values and see if we can simplify them
+                    const conv = JSON.parse(JSON.stringify(map));
+                    // we don't want to change the pricing conversion, because this may change it
+                    // from a local currency to a foreign one
+                    if (unit !== "Cena") {
+                        for (let [shortcut, label] of Object.entries(measures)) {
+                            const newVal = map.val / unitConv[shortcut];
+                            // 1) it has to be at least 1, we don't want "0.3 metres"
+                            // 2) either the existing value is less than one, so this is automatically
+                            //    better, or they are both >= 1, so we need to be closer to 1
+                            if (newVal >= 1 && (conv.val < 1 || newVal < conv.val)) {
+                                conv.val = newVal;
+                                conv.unitLabel = label;
+                                conv.unitNorm = shortcut;
+                                conv.natval = natVal(newVal);
+                            }
+                        }
+                    }
+                    const {baseVal, pow} = maxPow(conv.val)
+                    const newHash = `#num=${baseVal}&mul=${pow}&unit=${conv.unitNorm}`;
                     a.setAttribute('href', newHash);
-                    a.innerHTML = `${map.natval} ${map.unitLabel}`;
+                    a.innerHTML = `${conv.natval} ${conv.unitLabel}`;
                     a.addEventListener('click', (e) => {
-                        // TODO: tohle znamena, ze nefunguje historie :(
                         location.hash = newHash;
                     })
                     ll.appendChild(a)
