@@ -550,6 +550,27 @@ const convTgObj = [
         }
     },
     {
+        'label': 'hasičských helem v plastech',
+        'conversions': {
+            'Čas': {
+                'units': 24*60*365,
+                'desc': 'běžnou konzumací',
+                'sources': [
+                    'https://www.reuters.com/article/environment-plastic-diet-wider-image-int-idUSKBN28I178',
+                    'https://www.novinky.cz/koktejl/clanek/plasty-v-nasem-jidle-a-piti-za-rok-snime-celou-hasicskou-helmu-40344721',
+                ]
+            },
+            'Váha': {
+                'units': 0.252,
+                'desc': 'běžnou konzumací',
+                'sources': [
+                    'https://www.reuters.com/article/environment-plastic-diet-wider-image-int-idUSKBN28I178',
+                    'https://www.novinky.cz/koktejl/clanek/plasty-v-nasem-jidle-a-piti-za-rok-snime-celou-hasicskou-helmu-40344721',
+                ]
+            }
+        }
+    },
+    {
         'label': 'krabiček cigaret',
         'conversions': {
             'Cena': {
