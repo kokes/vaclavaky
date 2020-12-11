@@ -94,6 +94,16 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         arr.sort(() => Math.random() - .5);
     }
 
+    function norm(units, unit) {
+        if (!unit) {
+            return units;
+        }
+        return units * unitConv[unit];
+    }
+    function normval(convobj) {
+        return norm(convobj.units, convobj.unit);
+    }
+
     function renderQuestion() {
         const qd = document.getElementById('question');
         qd.innerHTML = '';
@@ -110,11 +120,11 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         shuffleArray(targets);
         qs.push(targets.pop());
          // chceme tu menší/lehčí/levnější věc jako první, ať ta otázka má smysl
-        qs.sort((a, b) => a.conversions[measure].units - b.conversions[measure].units);
+        qs.sort((a, b) => normval(a.conversions[measure]) - normval(b.conversions[measure]));
 
         qd.innerHTML = `${measure}: <input id='guess'></input> <em>${qs[0].label}</em> se vejde do <em>${qs[1].label}</em>`;
 
-        const answer = qs[1].conversions[measure].units / qs[0].conversions[measure].units;
+        const answer = normval(qs[1].conversions[measure]) / normval(qs[0].conversions[measure]);
         console.log(`Pro podvodníčky tu máme odpověď: ${answer}`);
 
 
