@@ -14,6 +14,7 @@ let unitConv = {
     'gbp': 31.347,
 
     // normalize: kg
+    'g': 1/1000,
     'kg': 1,
     'tn': 1000,
     'lb': 0.453592,
@@ -92,7 +93,9 @@ const convTgObj = [
         'label': 'koleček paprikáše',
         'conversions': {
             'Váha': {
-                'units': 0.0027,
+                // 'units': 0.0027,
+                'units': 2.7,
+                'unit': 'g',
             },
             'Rozloha': {
                 'units': 0.003025,
@@ -144,7 +147,8 @@ const convTgObj = [
                 'units': 10578820,
             },
             'Rozloha': {
-                'units': 78866000000,
+                'units': 78866,
+                'unit': 'km2',
             }
         }
     },
@@ -340,7 +344,8 @@ const convTgObj = [
         'label': 'těhotenství',
         'conversions': {
             'Čas': {
-                'units': 403200,
+                'units': 40,
+                'unit': 'w',
             }
         }
     },
@@ -827,7 +832,8 @@ const convTgObj = [
         'label': 'DVD',
         'conversions': {
             'Data': {
-                'units': 4700000000,
+                'units': 4.7,
+                'unit': 'gb',
             }
         }
     },
@@ -938,12 +944,14 @@ const convTgObj = [
         'conversions': {
             'Vzdálenost': {
                 'units': 2.4,
+                'unit': 'm',
                 'sources': [
                     'https://en.wikipedia.org/wiki/Horse_length',
                 ]
             },
             'Čas': {
-                'units': 0.0033333333333333335,
+                'units': 1/5,
+                'unit': 's',
                 'sources': [
                     'https://en.wikipedia.org/wiki/Horse_length',
                 ]
@@ -1055,26 +1063,38 @@ function numToText(number, mul, unit, gr) {
         if (!el) {
             continue;
         }
-        let nval = natVal(num / el.units);
+        // TODO: to be replaced by validation
+        if (el.unit !== undefined && !unitConv.hasOwnProperty(el.unit)) {
+            throw new Error('invalid unit ' + el.unit);
+        }
+        // we can specify conversions as "1000 m3" now, we don't have to normalise anymore
+        const normed = num / el.units / (unitConv[el.unit] || 1);
+        let nval = natVal(normed);
         let conversions = {};
         for (let [tp, mp] of Object.entries(conv.conversions)) {
             if (tp === gr) continue;
 
+            // TODO: to be replaced by validation
+            if (mp.unit !== undefined && !unitConv.hasOwnProperty(mp.unit)) {
+                throw new Error('invalid unit ' + el.unit);
+            }
+            const newNormed = normed * mp.units * (unitConv[mp.unit] || 1);
+
             conversions[tp] = {
-                val: num / el.units * mp.units,
-                natval: natVal(num / el.units * mp.units),
+                val: newNormed,
+                natval: natVal(newNormed),
                 unitLabel: units[tp][1],
                 unitNorm: units[tp][0],
                 description: mp[1],
             }
         }
         res.push({
-            origVal: num / el.units,
+            origVal: normed,
             value: nval,
             unit: conv.label,
             sources: el.sources,
             conversions: conversions,
-            normalisation: el.units + ' ' + units[gr][1],
+            normalisation: el.units + ' ' + (el.unit || units[gr][1]), // TODO: support nice labels for all units
             description: el.desc,
         });
     }
