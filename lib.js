@@ -1121,13 +1121,12 @@ function numToText(number, mul, unit, gr) {
     return res;
 }
 
-// prep for tests
-// try {
-//    module.exports = exports = {
-//        numToText,
-//        unitLookup,
-//        units,
-//        convTgObj,
-//        natMap,
-//    };
-// } catch (e) {}
+try {
+   module.exports = exports = {
+       numToText,
+       unitLookup,
+       units,
+       convTgObj,
+       natMap,
+   };
+} catch (e) {}
