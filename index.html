@@ -310,22 +310,21 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                     const a = document.createElement('a');
 
                     // convert "10 000 kg" into "10 tons"
-                    const options = document.querySelectorAll(`select#unit optgroup[label=${unit}] option`);
-                    const measures = Array.from(options, x=>({[x.value]: x.label})).reduce((a, b)=>Object.assign({}, a, b));
+                    const measures = units[unit];
 
                     // copy the existing values and see if we can simplify them
                     const conv = JSON.parse(JSON.stringify(map));
                     // we don't want to change the pricing conversion, because this may change it
                     // from a local currency to a foreign one
                     if (unit !== "Cena") {
-                        for (let [shortcut, label] of Object.entries(measures)) {
-                            const newVal = map.val / unitConv[shortcut];
+                        for (let [shortcut, props] of Object.entries(measures)) {
+                            const newVal = map.val / unitLookup(shortcut).rate;
                             // 1) it has to be at least 1, we don't want "0.3 metres"
                             // 2) either the existing value is less than one, so this is automatically
                             //    better, or they are both >= 1, so we need to be closer to 1
                             if (newVal >= 1 && (conv.val < 1 || newVal < conv.val)) {
                                 conv.val = newVal;
-                                conv.unitLabel = label;
+                                conv.unitLabel = props[0];
                                 conv.unitNorm = shortcut;
                                 conv.natval = natVal(newVal);
                             }

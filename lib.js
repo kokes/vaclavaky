@@ -1,69 +1,80 @@
+const units = {
+    'Váha': {
+        'g': ['gramů', 1/1000],
+        'kg': ['kilogramů', 1],
+        'tn': ['tun', 1000],
+        'lb': ['liber', 0.453592],
+    },
+    'Rozloha': {
+        'ft2': ['čtverečních stop', 0.092903],
+        'm2': ['čtverečních metrů', 1],
+        'km2': ['čtverečních kilometrů', 1000 * 1000],
+        'ha': ['hektarů', 100 * 100],
+        'msq': ['čtverečních mil', 1609.344 * 1609.344],
+    },
+    'Cena': {
+        'kc': ['korun', 1],
+        'usd': ['dolarů', 25.535], // 3/4/2020 (cnb.cz)
+        'eur': ['eur', 27.540],
+        'gbp': ['liber', 31.347],
+    },
+    'Osob': {
+        '1': ['lidí', 1],
+        '2': ['dvojic', 2],
+        '4': ['čtyřčlenných rodin', 4],
+    },
+    'Objem': {
+        'ml': ['mililitrů', 0.001 / 1000],
+        'l': ['litrů', 0.001],
+        'm3': ['metrů krychlových', 1],
+        'hl': ['hektolitrů', 0.1],
+        'ft3': ['krychlových stop', 1/35],
+    },
+    'Vzdálenost': {
+        'm': ['metrů', 1],
+        'km': ['kilometrů', 1000],
+    },
+    'Data': {
+        'b': ['bajtů', 1],
+        'kb': ['kilobajtů', 1000],
+        'mb': ['megabajtů', Math.pow(1000, 2)],
+        'gb': ['gigabajtů', Math.pow(1000, 3)],
+        'tb': ['terabajtů', Math.pow(1000, 4)],
+        'pb': ['petabajtů', Math.pow(1000, 5)],
+        'eb': ['exabajtů', Math.pow(1000, 6)],
+        'zb': ['zetabajtů', Math.pow(1000, 7)],
+        'yb': ['yotabajtů', Math.pow(1000, 8)],
+    },
+    'Čas': {
+        's': ['sekund', 1/60],
+        'min': ['minut', 1],
+        'h': ['hodin', 60],
+        'd': ['dní', 60 * 24],
+        'w': ['týdnů', 60 * 24 * 7],
+        'y': ['let', 60 * 24 * 365],
+    }
+}
 
-let unitConv = {
-    // normalize: m2
-    'ft2': 0.092903,
-    'm2': 1,
-    'km2': 1000 * 1000,
-    'ha': 100 * 100,
-    'msq': 1609.344 * 1609.344,
+function findNorm(convs) {
+    for (let [key, props] of Object.entries(convs)) {
+        if (props[1] === 1) {
+            return key;
+        }
+    }
+    throw new Error(`no norm for ${convs}`);
+}
 
-    // normalize: kc
-    'kc': 1,
-    'usd': 25.535, // 3/4/2020 (cnb.cz)
-    'eur': 27.540,
-    'gbp': 31.347,
-
-    // normalize: kg
-    'g': 1/1000,
-    'kg': 1,
-    'tn': 1000,
-    'lb': 0.453592,
-
-    // normalize: people
-    '1': 1,
-    '2': 2,
-    '4': 4,
-
-    //normalize: m
-    'm': 1,
-    'km': 1000,
-
-    // normalize m^3
-    'ml': 0.001 / 1000,
-    'l': 0.001,
-    'm3': 1,
-    'hl': 0.1,
-    'ft3': 1/35,
-
-    // normalize b
-    'b': 1,
-    'kb': 1000,
-    'mb': Math.pow(1000, 2),
-    'gb': Math.pow(1000, 3),
-    'tb': Math.pow(1000, 4),
-    'pb': Math.pow(1000, 5),
-    'eb': Math.pow(1000, 6),
-    'zb': Math.pow(1000, 7),
-    'yb': Math.pow(1000, 8),
-
-    // normalize: minutes
-    's': 1/60,
-    'min': 1,
-    'h': 60,
-    'd': 60 * 24,
-    'w': 60 * 24 * 7,
-    'y': 60 * 24 * 365,
-};
-
-let units = {
-    'Váha': ['kg', 'kg'],
-    'Rozloha': ['m2', 'm²'],
-    'Cena': ['kc', 'Kč'],
-    'Osob': ['1', 'lidí'],
-    'Objem': ['m3', 'm³'],
-    'Vzdálenost': ['m', 'm'], // TODO: chtelo by to rozlisit vzdalenost a vysku, jestli to pujde
-    'Data': ['b', 'bajtů'],
-    'Čas': ['min', 'minut'],
+function unitLookup(shortcut) {
+    for (let convs of Object.values(units)) {
+        if (convs.hasOwnProperty(shortcut)) {
+            return {
+                label: convs[shortcut][0],
+                rate: convs[shortcut][1],
+                norm: findNorm(convs),
+            }
+        }
+    }
+    throw new Error(`conversion for ${shortcut} not found`)
 }
 
 const convTgObj = [
@@ -1055,7 +1066,7 @@ function numToText(number, mul, unit, gr) {
 
     num *= Math.pow(10, parseInt(mul));
 
-    num *= unitConv[unit];
+    num *= unitLookup(unit).rate;
 
     let res = [];
     for (let conv of convTgObj) {
@@ -1063,30 +1074,37 @@ function numToText(number, mul, unit, gr) {
         if (!el) {
             continue;
         }
-        // TODO: to be replaced by validation
-        if (el.unit !== undefined && !unitConv.hasOwnProperty(el.unit)) {
-            throw new Error('invalid unit ' + el.unit);
-        }
         // we can specify conversions as "1000 m3" now, we don't have to normalise anymore
-        const normed = num / el.units / (unitConv[el.unit] || 1);
+        let normed = num / el.units;
+        if (el.unit !== undefined) {
+            normed /= unitLookup(el.unit).rate;
+        }
         let nval = natVal(normed);
         let conversions = {};
         for (let [tp, mp] of Object.entries(conv.conversions)) {
             if (tp === gr) continue;
 
             // TODO: to be replaced by validation
-            if (mp.unit !== undefined && !unitConv.hasOwnProperty(mp.unit)) {
-                throw new Error('invalid unit ' + el.unit);
+            // if (mp.unit !== undefined && !unitLookup.hasOwnProperty(mp.unit)) {
+            //     throw new Error('invalid unit ' + el.unit);
+            // }
+            let newNormed = normed * mp.units; // * (unitLookup[mp.unit] || 1);
+            if (mp.unit !== undefined) {
+                newNormed *= unitLookup(mp.unit).rate;
             }
-            const newNormed = normed * mp.units * (unitConv[mp.unit] || 1);
 
+            const finalUnit = el.unit || findNorm(units[tp]);
             conversions[tp] = {
                 val: newNormed,
                 natval: natVal(newNormed),
-                unitLabel: units[tp][1],
-                unitNorm: units[tp][0],
+                unitLabel: unitLookup(finalUnit).label,
+                unitNorm: unitLookup(finalUnit).norm,
                 description: mp[1],
             }
+        }
+        let unitLabel = unitLookup(findNorm(units[gr])).label;
+        if (el.unit !== undefined) {
+            unitLabel = unitLookup(el.unit).label;
         }
         res.push({
             origVal: normed,
@@ -1094,7 +1112,7 @@ function numToText(number, mul, unit, gr) {
             unit: conv.label,
             sources: el.sources,
             conversions: conversions,
-            normalisation: el.units + ' ' + (el.unit || units[gr][1]), // TODO: support nice labels for all units
+            normalisation: el.units + ' ' + unitLabel,
             description: el.desc,
         });
     }
@@ -1102,3 +1120,14 @@ function numToText(number, mul, unit, gr) {
 
     return res;
 }
+
+// prep for tests
+// try {
+//    module.exports = exports = {
+//        numToText,
+//        unitLookup,
+//        units,
+//        convTgObj,
+//        natMap,
+//    };
+// } catch (e) {}

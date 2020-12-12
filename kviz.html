@@ -98,7 +98,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         if (!unit) {
             return units;
         }
-        return units * unitConv[unit];
+        return units * unitLookup(unit).rate;
     }
     function normval(convobj) {
         return norm(convobj.units, convobj.unit);
