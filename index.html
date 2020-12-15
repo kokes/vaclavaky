@@ -99,60 +99,6 @@
         </select>
 
         <select id='unit'>
-            <optgroup label='Cena'>
-                <option value='kc'>Kč</option>
-                <option value='usd'>dolarů</option>
-                <option value='eur'>eur</option>
-                <option value='gbp'>liber</option>
-            </optgroup>
-            <optgroup label='Rozloha'>
-                <option value='ft2'>ft&sup2;</option>
-                <option value='m2'>m&sup2;</option>
-                <option value='km2'>km&sup2;</option>
-                <option value='ha'>hektarů</option>
-                <option value='msq'>čtverečných mil</option>
-            </optgroup>
-            <optgroup label='Vzdálenost'>
-                <option value='m'>m</option>
-                <option value='km'>km</option>
-            </optgroup>
-            <optgroup label='Váha'>
-                <option value='g'>g</option>
-                <option value='kg'>kg</option>
-                <option value='tn'>tun</option>
-                <option value='lb'>liber</option>
-            </optgroup>
-            <optgroup label='Osob'>
-                <option value='1'>lidí</option>
-                <option value='2'>párů</option>
-                <option value='4'>rodin</option>
-            </optgroup>
-            <optgroup label='Objem'>
-                <option value='ml'>mililitrů</option>
-                <option value='l'>litrů</option>
-                <option value='m3'>m&sup3;</option>
-                <option value='hl'>hl</option>
-                <option value='ft3'>ft&sup3;</option>
-            </optgroup>
-            <optgroup label='Data'>
-                <option value='b'>B</option>
-                <option value='kb'>kB</option>
-                <option value='mb'>MB</option>
-                <option value='gb'>GB</option>
-                <option value='tb'>TB</option>
-                <option value='pb'>PB</option>
-                <option value='eb'>EB</option>
-                <option value='zb'>ZB</option>
-                <option value='yb'>YB</option>
-            </optgroup>
-            <optgroup label='Čas'>
-                <option value='s'>sekund</option>
-                <option value='min'>minut</option>
-                <option value='h'>hodin</option>
-                <option value='d'>dní</option>
-                <option value='w'>týdnů</option>
-                <option value='y'>let</option>
-            </optgroup>
         </select>
     </div>
 </header>
@@ -181,6 +127,19 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
         opt.setAttribute('value', pow);
         opt.innerText = text;
         selMul.append(opt);
+    }
+    const selUnit = document.getElementById('unit');
+    for (let [unit, convs] of Object.entries(units)) {
+        const optg = document.createElement('optgroup');
+        optg.setAttribute('label', unit);
+        for (let [shortcut, props] of Object.entries(convs)) {
+            const opt = document.createElement('option');
+            opt.setAttribute('value', shortcut);
+            opt.innerText = props[0];
+            optg.appendChild(opt);
+        }
+        
+        selUnit.append(optg);
     }
 
     document.getElementById('num').addEventListener('change', constructHash);

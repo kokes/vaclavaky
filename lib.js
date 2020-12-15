@@ -1,4 +1,10 @@
 const units = {
+    'Cena': {
+        'kc': ['korun', 1],
+        'usd': ['dolarů', 25.535], // 3/4/2020 (cnb.cz)
+        'eur': ['eur', 27.540],
+        'gbp': ['liber', 31.347],
+    },
     'Váha': {
         'g': ['gramů', 1/1000],
         'kg': ['kilogramů', 1],
@@ -11,12 +17,6 @@ const units = {
         'km2': ['čtverečních kilometrů', 1000 * 1000],
         'ha': ['hektarů', 100 * 100],
         'msq': ['čtverečních mil', 1609.344 * 1609.344],
-    },
-    'Cena': {
-        'kc': ['korun', 1],
-        'usd': ['dolarů', 25.535], // 3/4/2020 (cnb.cz)
-        'eur': ['eur', 27.540],
-        'gbp': ['liber', 31.347],
     },
     'Osob': {
         '1': ['lidí', 1],
