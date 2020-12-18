@@ -82,6 +82,9 @@ const convTgObj = [
         'label': 'vozů Škoda Fabia',
         'conversions': {
             // 'Objem': [ 315 / 1000, 'plných kufrů Škody Fabia'], // TODO: tohle jsou kufry, ne cely auta, takze to je nefer
+            'Osob': {
+                'units': 5,
+            },
             'Vzdálenost': {
                 'units': 3.992,
             },
