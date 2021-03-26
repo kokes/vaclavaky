@@ -89,7 +89,7 @@ const convTgObj = [
                 ],
             },
             'Vzdálenost': {
-                'units': 3.992,
+                'units': 3.997,
                 'sources': [
                     'https://www.skoda-auto.cz/modely/fabia/fabia',
                 ],
@@ -107,7 +107,7 @@ const convTgObj = [
                 ],
             },
             'Rozloha': {
-                'units': 7.381784,
+                'units': 3.997 * 1.958, // délka krát šířka (včetně zrcátek)
                 'sources': [
                     'https://www.skoda-auto.cz/modely/fabia/fabia',
                 ],
