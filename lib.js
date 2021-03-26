@@ -84,21 +84,33 @@ const convTgObj = [
             // 'Objem': [ 315 / 1000, 'plných kufrů Škody Fabia'], // TODO: tohle jsou kufry, ne cely auta, takze to je nefer
             'Osob': {
                 'units': 5,
+                'sources': [
+                    'https://www.skoda-auto.cz/modely/fabia/fabia',
+                ],
             },
             'Vzdálenost': {
                 'units': 3.992,
+                'sources': [
+                    'https://www.skoda-auto.cz/modely/fabia/fabia',
+                ],
             },
             'Cena': {
                 'units': 279900,
                 'sources': [
                     'https://www.skoda-auto.cz/modely/fabia/fabia',
-                ]
+                ],
             },
             'Váha': {
                 'units': 1150,
+                'sources': [
+                    'https://www.skoda-auto.cz/modely/fabia/fabia',
+                ],
             },
             'Rozloha': {
                 'units': 7.381784,
+                'sources': [
+                    'https://www.skoda-auto.cz/modely/fabia/fabia',
+                ],
                 'desc': 'půdorys auta',
             }
         }
