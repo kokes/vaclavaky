@@ -280,12 +280,15 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                     }
                     target = document.createElement('span');
                     let left = el.origVal - 1;
+                    let buffer = [];
                     while (left > 0) {
                         const count = Math.min(el.emoji.length, left);
-                        const chunk = ' ' + el.emoji.slice(0, count).join(' ');
-                        target.appendChild(document.createTextNode(chunk));
+                        // asi bych to flushoval někdy častěji - takhle to zbytečně čeká
+                        // na velkej buffer, a je tam divná prodleva
+                        buffer = buffer.concat(el.emoji.slice(0, count));
                         left -= count;
                     }
+                    target.appendChild(document.createTextNode(' ' + buffer.join(' ')));
 
 
                     e.target.appendChild(target);
