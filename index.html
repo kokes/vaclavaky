@@ -279,17 +279,29 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                         return;
                     }
                     target = document.createElement('span');
-                    let left = el.origVal - 1;
+                    let leftExact = el.origVal - 1;
+                    let left = Math.ceil(leftExact);
                     let buffer = [];
-                    while (left > 0) {
+                    while (left >= 1) {
                         const count = Math.min(el.emoji.length, left);
                         // asi bych to flushoval někdy častěji - takhle to zbytečně čeká
                         // na velkej buffer, a je tam divná prodleva
                         buffer = buffer.concat(el.emoji.slice(0, count));
                         left -= count;
                     }
-                    target.appendChild(document.createTextNode(' ' + buffer.join(' ')));
+                    let last;
+                    if (left !== leftExact) {
+                        last = document.createElement('span');
+                        last.textContent = ' ' + buffer[buffer.length - 1]; // TODO: thinsp do konstant nekde
+                        const opacity = leftExact - Math.floor(leftExact);
+                        last.setAttribute('style', `opacity: ${opacity.toFixed(2)}`);
 
+                        buffer = buffer.slice(0, buffer.length - 1);
+                    }
+                    target.appendChild(document.createTextNode(' ' + buffer.join(' ')));
+                    if (last !== undefined) {
+                        target.appendChild(last);
+                    }
 
                     e.target.appendChild(target);
                 });
