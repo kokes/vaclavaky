@@ -261,6 +261,37 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
                 link.setAttribute('href', hyperlink);
                 li.appendChild(link);
             }
+            if (el.emoji !== undefined && el.origVal >= 3 && el.origVal < 10000) {
+                const ee = document.createElement('a');
+                ee.textContent = el.emoji[el.emoji.length-1];
+                ee.setAttribute('style', 'padding-left: .2em; text-decoration: none;');
+                ee.setAttribute('href', '');
+                ee.addEventListener('click', (e) => {
+                    // TODO: asi by bylo hezci, kdyby to bylo jako [auto][auto][au...] (fade out)
+                    //       aby bylo jasny, ze tam je toho vic a ze se na to da kliknout
+                    e.preventDefault();
+                    let target = e.target.querySelector('span');
+                    if (e.target.tagName == 'SPAN') {
+                        target = e.target;
+                    }
+                    if (target !== null) {
+                        target.remove();
+                        return;
+                    }
+                    target = document.createElement('span');
+                    let left = el.origVal - 1;
+                    while (left > 0) {
+                        const count = Math.min(el.emoji.length, left);
+                        const chunk = ' ' + el.emoji.slice(0, count).join(' ');
+                        target.appendChild(document.createTextNode(chunk));
+                        left -= count;
+                    }
+
+
+                    e.target.appendChild(target);
+                });
+                li.appendChild(ee);
+            }
 
             // other conversions
             li.appendChild((() => {

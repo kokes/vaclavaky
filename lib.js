@@ -80,6 +80,7 @@ function unitLookup(shortcut) {
 const convTgObj = [
     {
         'label': 'vozů Škoda Fabia',
+        'emoji': ['🚙', '🚗'],
         'conversions': {
             // 'Objem': [ 315 / 1000, 'plných kufrů Škody Fabia'], // TODO: tohle jsou kufry, ne cely auta, takze to je nefer
             'Osob': {
@@ -149,6 +150,7 @@ const convTgObj = [
     },
     {
         'label': 'disket',
+        'emoji': ['💾'],
         'conversions': {
             'Rozloha': {
                 'units': 0.008277000000000001,
@@ -189,6 +191,7 @@ const convTgObj = [
     },
     {
         'label': 'cheeseburgerů',
+        'emoji': ['🍔'],
         'conversions': {
             'Cena': {
                 'units': 33,
@@ -200,6 +203,7 @@ const convTgObj = [
     },
     {
         'label': 'Airbusů A380-800',
+        'emoji': ['🛩️'],
         'conversions': {
             'Osob': {
                 'units': 868,
@@ -235,6 +239,7 @@ const convTgObj = [
     },
     {
         'label': 'stadionů Wembley',
+        'emoji': ['🏟️'],
         'conversions': {
             'Osob': {
                 'units': 90000,
@@ -426,6 +431,7 @@ const convTgObj = [
     },
     {
         'label': 'postelí (šířka 160 cm)',
+        'emoji': ['🛏️'],
         'conversions': {
             'Rozloha': {
                 'units': 3.2,
@@ -434,6 +440,7 @@ const convTgObj = [
     },
     {
         'label': 'obědů',
+        'emoji': ['🍱', '🍲', '🥗', '🥪', '🥘'],
         'conversions': {
             'Cena': {
                 'units': 150,
@@ -496,6 +503,7 @@ const convTgObj = [
     },
     {
         'label': 'okresních nemocnic',
+        'emoji': ['🏥'],
         'conversions': {
             'Cena': {
                 'units': 1500000000,
@@ -659,6 +667,7 @@ const convTgObj = [
     },
     {
         'label': 'planet Země',
+        'emoji': ['🌍'],
         'conversions': {
             'Osob': {
                 'units': 7713468000,
@@ -814,6 +823,7 @@ const convTgObj = [
     },
     {
         'label': 'traktorů pro mladé a začínající zemědělce',
+        'emoji': ['🚜'],
         'conversions': {
             'Váha': {
                 'units': 1710,
@@ -920,6 +930,7 @@ const convTgObj = [
     },
     {
         'label': 'rozpětí křídel orlů skalních',
+        'emoji': ['🦅'],
         'conversions': {
             'Vzdálenost': {
                 'units': 2.025,
@@ -932,6 +943,7 @@ const convTgObj = [
     },
     {
         'label': 'rolí toaletního papíru',
+        'emoji': ['🧻'],
         'conversions': {
             'Vzdálenost': {
                 'units': 19.26875,
@@ -1129,6 +1141,7 @@ function numToText(number, mul, unit, gr) {
             conversions: conversions,
             normalisation: el.units + ' ' + unitLabel,
             description: el.desc,
+            emoji: conv.emoji,
         });
     }
     res.sort((a, b) => b.origVal - a.origVal);
