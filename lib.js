@@ -160,7 +160,16 @@ const convTgObj = [
         'emoji': ['💾'],
         'conversions': {
             'Rozloha': {
-                'units': 0.008277000000000001,
+                'units': 93.7 * 90 / (1000 * 1000),
+                'sources': [
+                    'https://www.fileformat.info/media/measurements.htm',
+                ],
+            },
+            'Objem': {
+                'units': 93.7 * 90 * 3.3 / (1000 * 1000 * 1000),
+                'sources': [
+                    'https://www.fileformat.info/media/measurements.htm',
+                ],
             },
             'Data': {
                 'units': 1440000,
