@@ -874,6 +874,7 @@ const convTgObj = [
     },
     {
         'label': 'CD',
+        'emoji': ['💿'],
         'conversions': {
             'Data': {
                 'units': 700000000,
@@ -882,6 +883,7 @@ const convTgObj = [
     },
     {
         'label': 'DVD',
+        'emoji': ['📀'],
         'conversions': {
             'Data': {
                 'units': 4.7,
