@@ -96,7 +96,7 @@ const convTgObj = [
                 ],
             },
             'Cena': {
-                'units': 279900,
+                'units': 329900,
                 'sources': [
                     'https://www.skoda-auto.cz/modely/fabia/fabia',
                 ],
@@ -113,6 +113,13 @@ const convTgObj = [
                     'https://www.skoda-auto.cz/modely/fabia/fabia',
                 ],
                 'desc': 'půdorys auta',
+            },
+            'Objem': {
+                'units': 3.997 * 1.958 * 1.452, // délka krát šířka (včetně zrcátek) krát výška (bounding box)
+                'sources': [
+                    'https://www.skoda-auto.cz/modely/fabia/fabia',
+                ],
+                'desc': '"v kvádru"',
             }
         }
     },
