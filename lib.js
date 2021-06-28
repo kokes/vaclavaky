@@ -1035,8 +1035,8 @@ const convTgObj = [
         'label': 'shiba inu 🐕',
         'conversions': {
             'Vzdálenost': {
-                'units': 39.5,
-                'unit': 'cm',
+                'units': 0.395,
+                'unit': 'm',
                 'desc': 'ideální pes na výšku',
                 'sources': [
                     'https://www.tribona.cz/cs/m-27-standard-plemene-fci-257-shiba',
