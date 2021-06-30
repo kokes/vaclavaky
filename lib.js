@@ -1030,6 +1030,34 @@ const convTgObj = [
                 ]
             }
         }
+    },
+    {
+        'label': 'shiba inu',
+        'emoji': ['🐕'],
+        'conversions': {
+            'Vzdálenost': {
+                'units': 0.65,
+                'unit': 'm',
+                'desc': 'od čumáku po ocas',
+                'sources': [
+                    'https://www.tribona.cz/cs/m-27-standard-plemene-fci-257-shiba',
+                ]
+            }
+        }
+    },
+    {
+        'label': 'shiba inu',
+        'emoji': ['🐕'],
+        'conversions': {
+            'Váha': {
+                'units': 11.5,
+                'unit': 'kg',
+                'desc': 'průměrná váha psa',
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Shiba-Inu',
+                ]
+            }
+        }
     }
 ]
 
