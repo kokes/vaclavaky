@@ -126,7 +126,7 @@ S láskou k absurdním konverzím sepsal <a href='https://twitter.com/kondrej'>@
     for (let [pow, text] of Object.entries(natMap)) {
         let opt = document.createElement('option');
         opt.setAttribute('value', pow);
-        opt.innerText = text;
+        opt.innerText = text.many;
         selMul.append(opt);
     }
     const selUnit = document.getElementById('unit');

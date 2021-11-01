@@ -1051,34 +1051,35 @@ function numFormat(val) {
     return ret;
 }
 
+// TODO(PR): fill this in
 const natMap = {
-    603: 'centiliard',
-    600: 'centilionů',
-    303: 'kvinkvagintilliard',
-    180: 'trigintilionů',
-    120: 'vigintilionů',
-    63: 'deciliard',
-    60: 'decilionů',
-    57: 'noniliard',
-    54: 'nonilionů',
-    51: 'oktiliard',
-    48: 'oktilionů',
-    45: 'septiliard',
-    42: 'septilionů',
-    39: 'sextiliard',
-    36: 'sextilionů',
-    33: 'kvintiliard',
-    30: 'kvintilionů',
-    27: 'kvadriliard',
-    24: 'kvadrilionů',
-    21: 'triliard',
-    18: 'trilionů',
-    15: 'biliard',
-    12: 'bilionů',
-    9: 'miliard',
-    6: 'milionů',
-    3: 'tisíc',
-    0: 'jednotek',
+    603: {'one': null, 'several': null, 'many': 'centiliard', 'frac': null},
+    600: {'one': null, 'several': null, 'many': 'centilionů', 'frac': null},
+    303: {'one': null, 'several': null, 'many': 'kvinkvagintilliard', 'frac': null},
+    180: {'one': null, 'several': null, 'many': 'trigintilionů', 'frac': null},
+    120: {'one': null, 'several': null, 'many': 'vigintilionů', 'frac': null},
+    63: {'one': null, 'several': null, 'many': 'deciliard', 'frac': null},
+    60: {'one': null, 'several': null, 'many': 'decilionů', 'frac': null},
+    57: {'one': null, 'several': null, 'many': 'noniliard', 'frac': null},
+    54: {'one': null, 'several': null, 'many': 'nonilionů', 'frac': null},
+    51: {'one': null, 'several': null, 'many': 'oktiliard', 'frac': null},
+    48: {'one': null, 'several': null, 'many': 'oktilionů', 'frac': null},
+    45: {'one': null, 'several': null, 'many': 'septiliard', 'frac': null},
+    42: {'one': null, 'several': null, 'many': 'septilionů', 'frac': null},
+    39: {'one': null, 'several': null, 'many': 'sextiliard', 'frac': null},
+    36: {'one': null, 'several': null, 'many': 'sextilionů', 'frac': null},
+    33: {'one': null, 'several': null, 'many': 'kvintiliard', 'frac': null},
+    30: {'one': null, 'several': null, 'many': 'kvintilionů', 'frac': null},
+    27: {'one': null, 'several': null, 'many': 'kvadriliard', 'frac': null},
+    24: {'one': null, 'several': null, 'many': 'kvadrilionů', 'frac': null},
+    21: {'one': null, 'several': null, 'many': 'triliard', 'frac': null},
+    18: {'one': null, 'several': null, 'many': 'trilionů', 'frac': null},
+    15: {'one': null, 'several': null, 'many': 'biliard', 'frac': null},
+    12: {'one': null, 'several': null, 'many': 'bilionů', 'frac': null},
+    9: {'one': 'miliarda', 'several': 'miliardy', 'many': 'miliard', 'frac': 'miliardy'},
+    6: {'one': 'milion', 'several': 'miliony', 'many': 'milionů', 'frac': 'milionu'},
+    3: {'one': 'tisíc', 'several': 'tisíce', 'many': 'tisíc', 'frac': 'tisíce'},
+    0: {'one': 'jednotka', 'several': 'jednotky', 'many': 'jednotek', 'frac': 'jednotky'},
 }
 
 // u hodnoty urci, jestli ji muzem vyjadrit jako AeB, např. 1300 = 1.3e3
@@ -1094,13 +1095,33 @@ function maxPow(val) {
     return { baseVal: val, pow: 0 }
 }
 
+// TODO: tests: 1 -> one, 1.00001 -> one, 1.01 -> frac, 2.002 -> several, 2.01 -> frac, ...
+function sizeClass(val) {
+    const valtr = parseFloat(val.toFixed(2));
+    if (valtr !== parseInt(val, 10)) {
+        return 'frac';
+    }
+    switch (valtr) {
+        case 1:
+            return 'one';
+        case 2:
+        case 3:
+        case 4:
+            return 'several';
+        default:
+            return 'many';
+    }
+}
+
+// TODO: test, 2000 -> 2 tisíce, 2e6 -> 2 miliony, ale 2,3e6 -> 2.3 milionu atd.
 function natVal(val) {
     const { baseVal, pow } = maxPow(val)
     // pro jednotky nepsat jednotky, jen pro tisíce a výš
     if (pow === 0)
         return numFormat(baseVal);
 
-    return `${numFormat(baseVal)} ${natMap[pow]}`;
+    const mul = natMap[pow][sizeClass(baseVal)];
+    return `${numFormat(baseVal)} ${mul}`;
 }
 
 function numToText(number, mul, unit, gr) {
