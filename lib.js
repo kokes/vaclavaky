@@ -206,7 +206,12 @@ const convTgObj = [
         }
     },
     {
-        'label': 'cheeseburgerů',
+        'label': {
+            'one': 'cheeseburger',
+            'several': 'cheeseburgery',
+            'many': 'cheeseburgerů',
+            'frac': 'cheeseburgeru',
+        },
         'emoji': ['🍔'],
         'conversions': {
             'Cena': {
@@ -586,7 +591,12 @@ const convTgObj = [
         }
     },
     {
-        'label': 'dětských plínek',
+        'label': {
+            'one': 'dětská plínka',
+            'several': 'dětské plínky',
+            'many': 'dětských plínek',
+            'frac': 'dětské plínky',
+        },
         'conversions': {
             'Cena': {
                 'units': 5,
@@ -1051,31 +1061,30 @@ function numFormat(val) {
     return ret;
 }
 
-// TODO(PR): fill this in
 const natMap = {
-    603: {'one': null, 'several': null, 'many': 'centiliard', 'frac': null},
-    600: {'one': null, 'several': null, 'many': 'centilionů', 'frac': null},
-    303: {'one': null, 'several': null, 'many': 'kvinkvagintilliard', 'frac': null},
-    180: {'one': null, 'several': null, 'many': 'trigintilionů', 'frac': null},
-    120: {'one': null, 'several': null, 'many': 'vigintilionů', 'frac': null},
-    63: {'one': null, 'several': null, 'many': 'deciliard', 'frac': null},
-    60: {'one': null, 'several': null, 'many': 'decilionů', 'frac': null},
-    57: {'one': null, 'several': null, 'many': 'noniliard', 'frac': null},
-    54: {'one': null, 'several': null, 'many': 'nonilionů', 'frac': null},
-    51: {'one': null, 'several': null, 'many': 'oktiliard', 'frac': null},
-    48: {'one': null, 'several': null, 'many': 'oktilionů', 'frac': null},
-    45: {'one': null, 'several': null, 'many': 'septiliard', 'frac': null},
-    42: {'one': null, 'several': null, 'many': 'septilionů', 'frac': null},
-    39: {'one': null, 'several': null, 'many': 'sextiliard', 'frac': null},
-    36: {'one': null, 'several': null, 'many': 'sextilionů', 'frac': null},
-    33: {'one': null, 'several': null, 'many': 'kvintiliard', 'frac': null},
-    30: {'one': null, 'several': null, 'many': 'kvintilionů', 'frac': null},
-    27: {'one': null, 'several': null, 'many': 'kvadriliard', 'frac': null},
-    24: {'one': null, 'several': null, 'many': 'kvadrilionů', 'frac': null},
-    21: {'one': null, 'several': null, 'many': 'triliard', 'frac': null},
-    18: {'one': null, 'several': null, 'many': 'trilionů', 'frac': null},
-    15: {'one': null, 'several': null, 'many': 'biliard', 'frac': null},
-    12: {'one': null, 'several': null, 'many': 'bilionů', 'frac': null},
+    603: {'one': 'centiliarda', 'several': 'centiliardy', 'many': 'centiliard', 'frac': 'centiliardy'},
+    600: {'one': 'centilion', 'several': 'centiliony', 'many': 'centilionů', 'frac': 'centilionu'},
+    303: {'one': 'kvinkvagintilliarda', 'several': 'kvinkvagintilliardy', 'many': 'kvinkvagintilliard', 'frac': 'kvinkvagintilliardy'},
+    180: {'one': 'trigintilion', 'several': 'trigintiliony', 'many': 'trigintilionů', 'frac': 'trigintilionu'},
+    120: {'one': 'vigintilion', 'several': 'vigintiliony', 'many': 'vigintilionů', 'frac': 'vgintilionu'},
+    63: {'one': 'deciliarda', 'several': 'deciliardy', 'many': 'deciliard', 'frac': 'deciliardy'},
+    60: {'one': 'decilion', 'several': 'deciliony', 'many': 'decilionů', 'frac': 'decilionu'},
+    57: {'one': 'noniliarda', 'several': 'noniliardy', 'many': 'noniliard', 'frac': 'noniliardy'},
+    54: {'one': 'nonilion', 'several': 'noniliony', 'many': 'nonilionů', 'frac': 'nonilionu'},
+    51: {'one': 'oktiliarda', 'several': 'oktiliardy', 'many': 'oktiliard', 'frac': 'oktiliardy'},
+    48: {'one': 'oktilion', 'several': 'oktiliony', 'many': 'oktilionů', 'frac': 'oktiolionu'},
+    45: {'one': 'septiliarda', 'several': 'septiliardy', 'many': 'septiliard', 'frac': 'septiliardy'},
+    42: {'one': 'septilion', 'several': 'septiliony', 'many': 'septilionů', 'frac': 'septilionu'},
+    39: {'one': 'sextiliarda', 'several': 'sextiliardy', 'many': 'sextiliard', 'frac': 'sextiliardy'},
+    36: {'one': 'sextilion', 'several': 'sextiliony', 'many': 'sextilionů', 'frac': 'sextilionu'},
+    33: {'one': 'kvantiliarda', 'several': 'kvantiliardy', 'many': 'kvintiliard', 'frac': 'kvantiliardy'},
+    30: {'one': 'kvitilion', 'several': 'kvintiliony', 'many': 'kvintilionů', 'frac': 'kvintilionu'},
+    27: {'one': 'kvadriliarda', 'several': 'kvadriliardy', 'many': 'kvadriliard', 'frac': 'kvadriliardy'},
+    24: {'one': 'kvadrilion', 'several': 'kvadriliony', 'many': 'kvadrilionů', 'frac': 'kvadrilionu'},
+    21: {'one': 'triliarda', 'several': 'triliardy', 'many': 'triliard', 'frac': 'triliardy'},
+    18: {'one': 'trilion', 'several': 'triliony', 'many': 'trilionů', 'frac': 'trilionu'},
+    15: {'one': 'biliarda', 'several': 'biliardy', 'many': 'biliard', 'frac': 'biliardy'},
+    12: {'one': 'bilion', 'several': 'biliony', 'many': 'bilionů', 'frac': 'bilionu'},
     9: {'one': 'miliarda', 'several': 'miliardy', 'many': 'miliard', 'frac': 'miliardy'},
     6: {'one': 'milion', 'several': 'miliony', 'many': 'milionů', 'frac': 'milionu'},
     3: {'one': 'tisíc', 'several': 'tisíce', 'many': 'tisíc', 'frac': 'tisíce'},
@@ -1172,10 +1181,19 @@ function numToText(number, mul, unit, gr) {
         if (el.unit !== undefined) {
             unitLabel = unitLookup(el.unit).label;
         }
+        // sklonovani
+        let normLabel = conv.label.many || conv.label; // muze to byt string nebo objekt (default - many)
+        if (maxPow(normed).pow === 0) {
+            const candidate = conv.label[sizeClass(normed)];
+            if (candidate !== undefined) {
+                normLabel = candidate
+            }
+        }
+
         res.push({
             origVal: normed,
             value: nval,
-            unit: conv.label,
+            unit: normLabel,
             sources: el.sources,
             conversions: conversions,
             normalisation: el.units + ' ' + unitLabel,
