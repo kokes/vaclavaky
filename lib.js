@@ -124,6 +124,55 @@ const convTgObj = [
         }
     },
     {
+        'label': 'letadel F-35',
+        'emoji': ['✈️'],
+        'conversions': {
+            'Osob': {
+                'units': 1,
+                'desc': 'Jde o třídu jednosedadlových stíhacích letounů',
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
+                ]
+            },
+            'Vzdálenost': {
+                'units': 15.4,
+                'desc': 'Délka letadla F-35B: 15,4 m',
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
+                ]
+            },
+            'Cena': {
+                'units': 3515796800,
+                'desc': 'Historické nákupy: 140-152 mil. USD',
+                'sources': [
+                    'https://www.seznamzpravy.cz/clanek/domaci-politika-prehledne-kolik-budou-stat-stihacky-z-usa-a-jak-by-se-zmenily-zakladny-209449',
+                    'https://www.google.com/search?q=146000000+USD+to+CZK',
+                ]
+            },
+            'Váha': {
+                'units': 14700,
+                'desc': 'Hmotnost prázdného stroje F-35B: 14 700 kg',
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
+                ]
+            },
+            'Rozloha': {
+                'units': 42.7,
+                'desc': 'Nosná plocha F-35B: 42,7 m²',
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
+                ]
+            },
+            'Objem': {
+                'units': (27300 - 14700 - 100)/1000, // Rozdíl mezi hmotností prázdného stroje a maximální vzletovou hmotností. Odečítám ještě 100kg jako váhu pilota s výstrojí.
+                'desc': 'Maximální množství vody, kterou by bylo možné přepravit pomocí F-35B',
+                'sources': [
+                    'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
+                ]
+            }
+        }
+    },
+    {
         'label': 'koleček paprikáše',
         'conversions': {
             'Váha': {
