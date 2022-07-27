@@ -161,13 +161,6 @@ const convTgObj = [
                     'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
                 ]
             },
-            'Objem': {
-                'units': (27300 - 14700 - 100)/1000, // Rozdíl mezi hmotností prázdného stroje a maximální vzletovou hmotností. Odečítám ještě 100kg jako váhu pilota s výstrojí.
-                'desc': 'rozdíl mezi maximální vzletovou hmotností a hmotností prázdného stroje',
-                'sources': [
-                    'https://cs.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II',
-                ]
-            }
         }
     },
     {
