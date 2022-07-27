@@ -215,7 +215,7 @@ const convTgObj = [
         'emoji': ['🍔'],
         'conversions': {
             'Cena': {
-                'units': 35,
+                'units': 39,
                 'sources': [
                     'https://www.mcdonalds.cz/menu/hovezi-burgery/cheeseburger/',
                 ]
