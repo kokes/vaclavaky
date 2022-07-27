@@ -1214,7 +1214,7 @@ function numToText(number, mul, unit, gr) {
                 natval: natVal(newNormed),
                 unitLabel: unitLookup(finalUnit).label,
                 unitNorm: unitLookup(finalUnit).norm,
-                description: mp[1],
+                description: mp.desc,
             }
         }
         let unitLabel = unitLookup(findNorm(units[gr])).label;
