@@ -1,9 +1,9 @@
 const units = {
     'Cena': {
         'kc': ['korun', 1],
-        'usd': ['dolarů', 25.535], // 3/4/2020 (cnb.cz)
-        'eur': ['eur', 27.540],
-        'gbp': ['liber', 31.347],
+        'usd': ['dolarů', 24.313], // 2022-07-27 (cnb.cz)
+        'eur': ['eur', 24.605],
+        'gbp': ['liber', 29.098],
     },
     'Váha': {
         'g': ['gramů', 1/1000],
