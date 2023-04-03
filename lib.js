@@ -96,7 +96,7 @@ const convTgObj = [
                 ],
             },
             'Cena': {
-                'units': 339900,
+                'units': 369900,
                 'sources': [
                     'https://www.skoda-auto.cz/modely/fabia/fabia',
                 ],
