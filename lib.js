@@ -255,7 +255,7 @@ const convTgObj = [
         'emoji': ['🍔'],
         'conversions': {
             'Cena': {
-                'units': 39,
+                'units': 42,
                 'sources': [
                     'https://www.mcdonalds.cz/menu/hovezi-burgery/cheeseburger/',
                 ]
@@ -357,7 +357,10 @@ const convTgObj = [
                 'units': 50,
             },
             'Cena': {
-                'units': 5000000,
+                'units': 50*153800,
+                'sources': [
+                    'https://www2.deloitte.com/cz/cs/pages/real-estate/articles/cze-develop-index.html',
+                ]
             }
         }
     },
@@ -512,9 +515,9 @@ const convTgObj = [
         'label': 'průměrných hrubých mezd',
         'conversions': {
             'Cena': {
-                'units': 34077,
+                'units': 43193,
                 'sources': [
-                    'https://www.czso.cz/csu/czso/cri/prumerne-mzdy-1-ctvrtleti-2020',
+                    'https://www.czso.cz/csu/czso/cri/prumerne-mzdy-2-ctvrtleti-2023',
                 ]
             }
         }
@@ -523,9 +526,9 @@ const convTgObj = [
         'label': 'průměrných hrubých mezd v Praze',
         'conversions': {
             'Cena': {
-                'units': 42760,
+                'units': 52833,
                 'sources': [
-                    'https://www.czso.cz/csu/czso/cri/prumerne-mzdy-1-ctvrtleti-2020',
+                    'https://www.czso.cz/csu/czso/cri/prumerne-mzdy-2-ctvrtleti-2023',
                 ]
             }
         }
@@ -534,10 +537,9 @@ const convTgObj = [
         'label': 'průměrných starobních důchodů',
         'conversions': {
             'Cena': {
-                'units': 14400,
+                'units': 20216,
                 'sources': [
-                    'https://ct24.ceskatelevize.cz/ekonomika/3094577-prumerny-duchod-ma-pristi-rok-vzrust-o-zhruba-800-korun-vlada-mozna-tentokrat-nic',
-                    'https://www.mpsv.cz/documents/20142/511219/30_12_2019+TZ_Co+se+meni+v+roce+2020.pdf/098c9a52-daab-742b-a7c1-3ae5c9b61a34',
+                    'https://www.cssz.cz/-/zacala-cervnova-vyplata-duchodu-po-mimoradne-valorizaci-prumerny-starobni-duchod-poprve-presahne-20-tisic-korun',
                 ]
             }
         }
@@ -626,7 +628,10 @@ const convTgObj = [
         'label': 'ročních rozpočtů Česka',
         'conversions': {
             'Cena': {
-                'units': 1309300000000,
+                'units': 2223*1e9,
+                'sources': [
+                    'https://www.mfcr.cz/assets/cs/media/2023-03-28_Statni-rozpocet-2023-v-kostce_v02.pdf',
+                ]
             }
         }
     },
