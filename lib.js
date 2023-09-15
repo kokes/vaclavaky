@@ -1,9 +1,9 @@
 const units = {
     'Cena': {
         'kc': ['korun', 1],
-        'usd': ['dolarů', 24.313], // 2022-07-27 (cnb.cz)
-        'eur': ['eur', 24.605],
-        'gbp': ['liber', 29.098],
+        'usd': ['dolarů', EXTERNAL.USD],
+        'eur': ['eur', EXTERNAL.EUR],
+        'gbp': ['liber', EXTERNAL.GBP],
     },
     'Váha': {
         'g': ['gramů', 1/1000],
