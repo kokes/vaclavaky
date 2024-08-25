@@ -172,7 +172,7 @@ const convTgObj = [
                 'unit': 'g',
             },
             'Rozloha': {
-                'units': 0.003025,
+                'units': 0.055 * 0.055,
                 'desc': 'vyskádaných do mřížky',
             },
             'Cena': {
@@ -181,6 +181,9 @@ const convTgObj = [
             'Vzdálenost': {
                 'units': 0.002,
                 'desc': 'na tloušťku',
+            },
+            'Objem': {
+                'units': 0.055 * 0.055 * 0.002,
             }
         }
     },
