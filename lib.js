@@ -216,7 +216,14 @@ const convTgObj = [
             },
             'Data': {
                 'units': 1440000,
-            }
+            },
+            'Váha': {
+                'units': 18,
+                'unit': 'g',
+                'sources': [
+                    'https://retrocomputing.stackexchange.com/questions/20097/what-is-the-standardized-weight-of-a-3-5-inch-floppy-disk#:~:text=The%20short%20answer%20%2F%20TLDR%3A%20One,the%20median%20is%2017%20gram',
+                ],
+            },
         }
     },
     {
