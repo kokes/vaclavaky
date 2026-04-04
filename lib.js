@@ -396,9 +396,9 @@ const convTgObj = [
                 ],
             },
             'Osob': {
-                'units': 16138,
-                'sources': [
-                    'https://cs.wikipedia.org/wiki/Brunt%C3%A1l',
+                'units': 14791, // k přelomu 2025/6
+                'sources': [ // veřejná databáze ČSÚ
+                    'https://vdb.czso.cz/vdbvo2/faces/cs/index.jsf?page=vystup-objekt&z=T&f=TABULKA&filtr=G%7EF_M%7EF_Z%7EF_R%7EF_P%7E_S%7E_U%7E301_null_&katalog=33155&pvo=DEM14&str=v109&u=v109__VUZEMI__43__597180',
                 ],
             }
         }
