@@ -1,9 +1,9 @@
 const units = {
-    'Cena': {
+    'Cena': {  // jednotné průměrné 2025 - letos se to nebude lišit moc https://mf.gov.cz/cs/dane-a-ucetnictvi/financni-zpravodaj/2026/financni-zpravodaj-cislo-2-2026-62472
         'kc': ['korun', 1],
-        'usd': ['dolarů', 24.313], // 2022-07-27 (cnb.cz)
-        'eur': ['eur', 24.605],
-        'gbp': ['liber', 29.098],
+        'usd': ['dolarů', 21.84],
+        'eur': ['eur', 24.66],
+        'gbp': ['liber', 28.80],
     },
     'Váha': {
         'g': ['gramů', 1/1000],
